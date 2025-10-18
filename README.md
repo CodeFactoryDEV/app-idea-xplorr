@@ -93,42 +93,12 @@ Control your location sharing and customize your discovery preferences
 7. **Build** a full day's adventure with multiple places
 8. **Go!** Start your spontaneous journey
 
-### The Algorithm
-
-```
-1. User taps X logo → Trigger randomization
-2. X logo rotates, map animates routes
-3. Fetch places within radius (configurable)
-4. Filter out:
-   - Already visited places
-   - No-go tagged locations
-   - Currently closed venues (optional)
-5. Weighted random selection based on:
-   - Distance (closer = slightly higher weight)
-   - Category diversity (avoid clustering)
-   - Ratings (minimum threshold)
-6. Animate route pulse → Present result
-7. Store selection in history
-```
-
 ---
 
-## 🛠️ Tech Stack (Planned)
+## 🛠️ Technical Details
 
-### Frontend
-- **React Native** / **Flutter** — Cross-platform mobile development
-- **MapKit** / **Google Maps SDK** — Interactive map rendering
-- **Reanimated** — Smooth gesture animations
-
-### Backend
-- **Node.js** + **Express** / **Firebase** — API and authentication
-- **PostgreSQL** / **MongoDB** — User data and preferences
-- **Redis** — Session management and caching
-
-### APIs & Services
-- **Google Places API** / **Foursquare API** — Place data
-- **Geolocation API** — User positioning
-- **OpenStreetMap** (alternative) — Free mapping data
+For detailed technical implementation, architecture, and setup instructions, see:
+📘 **[Technical Implementation Guide](docs/technical_implementation.md)**
 
 ---
 
@@ -145,8 +115,8 @@ Control your location sharing and customize your discovery preferences
 └────────┬────────┘      └────────┬─────────┘
          │                        │
          ▼                        │
-┌─────────────────┐              │
-│   Map View      │◀─────────────┘
+┌─────────────────┐               │
+│   Map View      │◀────────────-─┘
 │  (12 places)    │
 └────────┬────────┘
          │
@@ -236,17 +206,7 @@ Control your location sharing and customize your discovery preferences
 
 This project is in early development. Contributions, ideas, and feedback are welcome!
 
-### Setup (Coming Soon)
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/xplorr.git
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-```
+For setup instructions and development guidelines, see the [Technical Implementation Guide](docs/technical_implementation.md).
 
 ---
 
