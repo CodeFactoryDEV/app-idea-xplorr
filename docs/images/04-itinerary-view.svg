@@ -20,8 +20,19 @@
   <text x="80" y="170" font-family="Arial" font-size="14" font-weight="bold" fill="black">1. The Daily Grind</text>
   <text x="80" y="188" font-family="Arial" font-size="11" fill="gray">Cafe • 0.3 mi • 45 min</text>
   <text x="80" y="205" font-family="Arial" font-size="10" fill="gray">9:00 AM - 9:45 AM</text>
-  <rect x="280" y="215" width="45" height="20" fill="white" stroke="black" stroke-width="1" rx="3"/>
-  <text x="302" y="229" font-family="Arial" font-size="10" fill="black" text-anchor="middle">Remove</text>
+  <!-- Trash button (right side, vertically centered) -->
+  <circle cx="315" cy="195" r="12" fill="white" stroke="black" stroke-width="1.5"/>
+  <path d="M 311 190 L 319 190 M 310 192 L 310 200 L 320 200 L 320 192 M 313 192 L 313 198 M 317 192 L 317 198" stroke="black" stroke-width="1" fill="none"/>
+  
+  <!-- Connector line to next item -->
+  <line x1="60" y1="240" x2="60" y2="253" stroke="black" stroke-width="2" stroke-dasharray="3,3"/>
+  
+  <!-- Walking time between items -->
+  <g transform="translate(80, 248)">
+    <!-- Walking icon -->
+    <path d="M 0 0 L 2 -3 L 1 -5 M 2 -3 L 4 -2 M 0 0 L -1 3 M 0 0 L 2 2" stroke="gray" stroke-width="1" fill="none"/>
+    <text x="10" y="0" font-family="Arial" font-size="10" fill="gray">5 min walk</text>
+  </g>
   
   <!-- Item 2 -->
   <rect x="40" y="255" width="295" height="90" fill="white" stroke="black" stroke-width="2" rx="8"/>
@@ -29,8 +40,19 @@
   <text x="80" y="275" font-family="Arial" font-size="14" font-weight="bold" fill="black">2. Central Park</text>
   <text x="80" y="293" font-family="Arial" font-size="11" fill="gray">Park • 0.8 mi • 60 min</text>
   <text x="80" y="310" font-family="Arial" font-size="10" fill="gray">10:00 AM - 11:00 AM</text>
-  <rect x="280" y="320" width="45" height="20" fill="white" stroke="black" stroke-width="1" rx="3"/>
-  <text x="302" y="334" font-family="Arial" font-size="10" fill="black" text-anchor="middle">Remove</text>
+  <!-- Trash button (right side, vertically centered) -->
+  <circle cx="315" cy="300" r="12" fill="white" stroke="black" stroke-width="1.5"/>
+  <path d="M 311 295 L 319 295 M 310 297 L 310 305 L 320 305 L 320 297 M 313 297 L 313 303 M 317 297 L 317 303" stroke="black" stroke-width="1" fill="none"/>
+  
+  <!-- Connector line to next item -->
+  <line x1="60" y1="345" x2="60" y2="358" stroke="black" stroke-width="2" stroke-dasharray="3,3"/>
+  
+  <!-- Walking time between items -->
+  <g transform="translate(80, 353)">
+    <!-- Walking icon -->
+    <path d="M 0 0 L 2 -3 L 1 -5 M 2 -3 L 4 -2 M 0 0 L -1 3 M 0 0 L 2 2" stroke="gray" stroke-width="1" fill="none"/>
+    <text x="10" y="0" font-family="Arial" font-size="10" fill="gray">15 min walk</text>
+  </g>
   
   <!-- Item 3 -->
   <rect x="40" y="360" width="295" height="90" fill="white" stroke="black" stroke-width="2" rx="8"/>
@@ -38,8 +60,9 @@
   <text x="80" y="380" font-family="Arial" font-size="14" font-weight="bold" fill="black">3. Art Gallery 21</text>
   <text x="80" y="398" font-family="Arial" font-size="11" fill="gray">Gallery • 1.2 mi • 90 min</text>
   <text x="80" y="415" font-family="Arial" font-size="10" fill="gray">11:30 AM - 1:00 PM</text>
-  <rect x="280" y="425" width="45" height="20" fill="white" stroke="black" stroke-width="1" rx="3"/>
-  <text x="302" y="439" font-family="Arial" font-size="10" fill="black" text-anchor="middle">Remove</text>
+  <!-- Trash button (right side, vertically centered) -->
+  <circle cx="315" cy="405" r="12" fill="white" stroke="black" stroke-width="1.5"/>
+  <path d="M 311 400 L 319 400 M 310 402 L 310 410 L 320 410 L 320 402 M 313 402 L 313 408 M 317 402 L 317 408" stroke="black" stroke-width="1" fill="none"/>
   
   <!-- Add more button with X icon -->
   <rect x="90" y="480" width="195" height="40" fill="white" stroke="black" stroke-width="2" stroke-dasharray="5,5" rx="20"/>
