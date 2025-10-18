@@ -1,0 +1,55 @@
+<svg width="375" height="667" xmlns="http://www.w3.org/2000/svg">
+  <!-- Phone frame -->
+  <rect width="375" height="667" fill="white" stroke="black" stroke-width="2"/>
+  
+  <!-- Status bar -->
+  <rect width="375" height="44" fill="white"/>
+  <text x="20" y="30" font-family="Arial" font-size="12" fill="black">9:41</text>
+  
+  <!-- Header -->
+  <text x="187" y="80" font-family="Arial" font-size="24" font-weight="bold" fill="black" text-anchor="middle">Your Itinerary</text>
+  
+  <!-- Total time -->
+  <rect x="40" y="95" width="295" height="35" fill="white" stroke="black" stroke-width="1" rx="5"/>
+  <text x="187" y="118" font-family="Arial" font-size="12" fill="gray" text-anchor="middle">Total estimated time: 3h 15min</text>
+  
+  <!-- Itinerary items -->
+  <!-- Item 1 -->
+  <rect x="40" y="150" width="295" height="90" fill="white" stroke="black" stroke-width="2" rx="8"/>
+  <circle cx="60" cy="175" r="8" fill="black"/>
+  <text x="80" y="170" font-family="Arial" font-size="14" font-weight="bold" fill="black">1. The Daily Grind</text>
+  <text x="80" y="188" font-family="Arial" font-size="11" fill="gray">Cafe • 0.3 mi • 45 min</text>
+  <text x="80" y="205" font-family="Arial" font-size="10" fill="gray">9:00 AM - 9:45 AM</text>
+  <rect x="280" y="215" width="45" height="20" fill="white" stroke="black" stroke-width="1" rx="3"/>
+  <text x="302" y="229" font-family="Arial" font-size="10" fill="black" text-anchor="middle">Remove</text>
+  
+  <!-- Item 2 -->
+  <rect x="40" y="255" width="295" height="90" fill="white" stroke="black" stroke-width="2" rx="8"/>
+  <circle cx="60" cy="280" r="8" fill="black"/>
+  <text x="80" y="275" font-family="Arial" font-size="14" font-weight="bold" fill="black">2. Central Park</text>
+  <text x="80" y="293" font-family="Arial" font-size="11" fill="gray">Park • 0.8 mi • 60 min</text>
+  <text x="80" y="310" font-family="Arial" font-size="10" fill="gray">10:00 AM - 11:00 AM</text>
+  <rect x="280" y="320" width="45" height="20" fill="white" stroke="black" stroke-width="1" rx="3"/>
+  <text x="302" y="334" font-family="Arial" font-size="10" fill="black" text-anchor="middle">Remove</text>
+  
+  <!-- Item 3 -->
+  <rect x="40" y="360" width="295" height="90" fill="white" stroke="black" stroke-width="2" rx="8"/>
+  <circle cx="60" cy="385" r="8" fill="black"/>
+  <text x="80" y="380" font-family="Arial" font-size="14" font-weight="bold" fill="black">3. Art Gallery 21</text>
+  <text x="80" y="398" font-family="Arial" font-size="11" fill="gray">Gallery • 1.2 mi • 90 min</text>
+  <text x="80" y="415" font-family="Arial" font-size="10" fill="gray">11:30 AM - 1:00 PM</text>
+  <rect x="280" y="425" width="45" height="20" fill="white" stroke="black" stroke-width="1" rx="3"/>
+  <text x="302" y="439" font-family="Arial" font-size="10" fill="black" text-anchor="middle">Remove</text>
+  
+  <!-- Add more button -->
+  <rect x="90" y="480" width="195" height="40" fill="white" stroke="black" stroke-width="2" stroke-dasharray="5,5" rx="20"/>
+  <text x="187" y="505" font-family="Arial" font-size="14" fill="gray" text-anchor="middle">+ Add Another Place</text>
+  
+  <!-- Action buttons -->
+  <rect x="40" y="550" width="140" height="45" fill="black" stroke="black" stroke-width="2" rx="22"/>
+  <text x="110" y="578" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Start Trip</text>
+  
+  <rect x="195" y="550" width="140" height="45" fill="white" stroke="black" stroke-width="2" rx="22"/>
+  <text x="265" y="578" font-family="Arial" font-size="14" fill="black" text-anchor="middle">Share</text>
+</svg>
+

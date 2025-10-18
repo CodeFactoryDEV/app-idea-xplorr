@@ -1,0 +1,41 @@
+<svg width="375" height="667" xmlns="http://www.w3.org/2000/svg">
+  <!-- Phone frame -->
+  <rect width="375" height="667" fill="white" stroke="black" stroke-width="2"/>
+  
+  <!-- Status bar -->
+  <rect width="375" height="44" fill="white"/>
+  <text x="20" y="30" font-family="Arial" font-size="12" fill="black">9:41</text>
+  <text x="320" y="30" font-family="Arial" font-size="12" fill="black">100%</text>
+  
+  <!-- App title -->
+  <text x="187" y="80" font-family="Arial" font-size="24" font-weight="bold" fill="black" text-anchor="middle">Roulett</text>
+  
+  <!-- Map area -->
+  <rect x="20" y="100" width="335" height="300" fill="white" stroke="black" stroke-width="2" rx="10"/>
+  <text x="187" y="130" font-family="Arial" font-size="12" fill="gray" text-anchor="middle">[MAP VIEW]</text>
+  
+  <!-- Map markers -->
+  <circle cx="100" cy="200" r="8" fill="black"/>
+  <circle cx="250" cy="180" r="8" fill="black"/>
+  <circle cx="180" cy="280" r="8" fill="black"/>
+  <circle cx="280" cy="320" r="8" fill="black"/>
+  
+  <!-- User location marker (different style) -->
+  <circle cx="187" cy="250" r="12" fill="none" stroke="black" stroke-width="3"/>
+  <circle cx="187" cy="250" r="6" fill="black"/>
+  
+  <!-- Swipe instruction -->
+  <text x="187" y="430" font-family="Arial" font-size="16" fill="black" text-anchor="middle">Swipe up to discover</text>
+  <text x="187" y="450" font-family="Arial" font-size="16" fill="black" text-anchor="middle">your next adventure</text>
+  
+  <!-- Swipe gesture indicator -->
+  <path d="M 187 470 L 187 490 M 177 480 L 187 470 L 197 480" stroke="black" stroke-width="2" fill="none"/>
+  
+  <!-- Bottom stats -->
+  <rect x="40" y="520" width="295" height="80" fill="white" stroke="black" stroke-width="1" rx="10"/>
+  <text x="187" y="545" font-family="Arial" font-size="12" fill="black" text-anchor="middle">12 places nearby</text>
+  <line x1="40" y1="555" x2="335" y2="555" stroke="black" stroke-width="1"/>
+  <text x="100" y="580" font-family="Arial" font-size="11" fill="gray" text-anchor="middle">Visited: 3</text>
+  <text x="270" y="580" font-family="Arial" font-size="11" fill="gray" text-anchor="middle">No-go: 1</text>
+</svg>
+
