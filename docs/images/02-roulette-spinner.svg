@@ -2,45 +2,99 @@
   <!-- Phone frame -->
   <rect width="375" height="667" fill="white" stroke="black" stroke-width="2"/>
   
-  <!-- Status bar -->
-  <rect width="375" height="44" fill="white"/>
-  <text x="20" y="30" font-family="Arial" font-size="12" fill="black">9:41</text>
+  <!-- Full screen map background -->
+  <rect x="2" y="2" width="371" height="663" fill="#f5f5f5"/>
   
-  <!-- App title -->
-  <text x="187" y="80" font-family="Arial" font-size="24" font-weight="bold" fill="black" text-anchor="middle">Roulett</text>
+  <!-- Map grid lines -->
+  <line x1="0" y1="150" x2="375" y2="150" stroke="#ddd" stroke-width="1"/>
+  <line x1="0" y1="300" x2="375" y2="300" stroke="#ddd" stroke-width="1"/>
+  <line x1="0" y1="450" x2="375" y2="450" stroke="#ddd" stroke-width="1"/>
+  <line x1="100" y1="0" x2="100" y2="667" stroke="#ddd" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="667" stroke="#ddd" stroke-width="1"/>
+  <line x1="300" y1="0" x2="300" y2="667" stroke="#ddd" stroke-width="1"/>
   
-  <!-- Roulette wheel -->
-  <circle cx="187" cy="280" r="130" fill="white" stroke="black" stroke-width="3"/>
+  <!-- Map streets -->
+  <path d="M 0 200 Q 150 180 375 220" stroke="#ccc" stroke-width="2" fill="none"/>
+  <path d="M 0 400 Q 200 380 375 410" stroke="#ccc" stroke-width="2" fill="none"/>
+  <path d="M 150 0 Q 140 300 160 667" stroke="#ccc" stroke-width="2" fill="none"/>
   
-  <!-- Wheel segments (simplified) -->
-  <line x1="187" y1="150" x2="187" y2="280" stroke="black" stroke-width="2"/>
-  <line x1="187" y1="280" x2="317" y2="280" stroke="black" stroke-width="2"/>
-  <line x1="187" y1="280" x2="120" y2="210" stroke="black" stroke-width="2"/>
-  <line x1="187" y1="280" x2="254" y2="210" stroke="black" stroke-width="2"/>
-  <line x1="187" y1="280" x2="120" y2="350" stroke="black" stroke-width="2"/>
-  <line x1="187" y1="280" x2="254" y2="350" stroke="black" stroke-width="2"/>
+  <!-- Other place markers (dimmed) -->
+  <g opacity="0.3">
+    <circle cx="95" cy="180" r="10" fill="black"/>
+    <circle cx="95" cy="180" r="6" fill="white"/>
+  </g>
+  <g opacity="0.3">
+    <circle cx="170" cy="280" r="10" fill="black"/>
+    <circle cx="170" cy="280" r="6" fill="white"/>
+  </g>
+  <g opacity="0.3">
+    <circle cx="120" cy="450" r="10" fill="black"/>
+    <circle cx="120" cy="450" r="6" fill="white"/>
+  </g>
+  <g opacity="0.3">
+    <circle cx="310" cy="500" r="10" fill="black"/>
+    <circle cx="310" cy="500" r="6" fill="white"/>
+  </g>
   
-  <!-- Center circle -->
-  <circle cx="187" cy="280" r="25" fill="black" stroke="black" stroke-width="2"/>
+  <!-- Animated routes (ghost routes showing randomization) -->
+  <!-- Route 1 (faint) -->
+  <path d="M 187 330 Q 140 250 95 180" stroke="black" stroke-width="2" fill="none" opacity="0.15" stroke-dasharray="8,4"/>
   
-  <!-- Pointer/Indicator at top -->
-  <path d="M 187 120 L 177 140 L 197 140 Z" fill="black"/>
+  <!-- Route 2 (faint) -->
+  <path d="M 187 330 Q 178 305 170 280" stroke="black" stroke-width="2" fill="none" opacity="0.15" stroke-dasharray="8,4"/>
   
-  <!-- Place names on segments -->
-  <text x="187" y="190" font-family="Arial" font-size="10" fill="black" text-anchor="middle">Cafe Luna</text>
-  <text x="260" y="260" font-family="Arial" font-size="10" fill="black" text-anchor="middle">Park</text>
-  <text x="140" y="240" font-family="Arial" font-size="10" fill="black" text-anchor="middle">Museum</text>
-  <text x="240" y="340" font-family="Arial" font-size="10" fill="black" text-anchor="middle">Gallery</text>
+  <!-- Route 3 (faint) -->
+  <path d="M 187 330 Q 153 390 120 450" stroke="black" stroke-width="2" fill="none" opacity="0.15" stroke-dasharray="8,4"/>
+  
+  <!-- Main active route (pulsing to destination) -->
+  <path d="M 187 330 Q 238 215 280 140" stroke="black" stroke-width="4" fill="none" stroke-dasharray="12,8"/>
+  
+  <!-- Pulse rings along the route -->
+  <circle cx="210" cy="280" r="8" fill="none" stroke="black" stroke-width="2" opacity="0.4"/>
+  <circle cx="240" cy="210" r="12" fill="none" stroke="black" stroke-width="2" opacity="0.3"/>
+  <circle cx="260" cy="170" r="15" fill="none" stroke="black" stroke-width="2" opacity="0.2"/>
+  
+  <!-- Center/User location (PULSING) -->
+  <circle cx="187" cy="330" r="35" fill="none" stroke="black" stroke-width="2" opacity="0.2"/>
+  <circle cx="187" cy="330" r="25" fill="none" stroke="black" stroke-width="2" opacity="0.4"/>
+  <circle cx="187" cy="330" r="15" fill="none" stroke="black" stroke-width="3" opacity="0.6"/>
+  <circle cx="187" cy="330" r="8" fill="black"/>
+  <text x="187" y="365" font-family="Arial" font-size="10" fill="black" text-anchor="middle">YOU</text>
+  
+  <!-- Destination marker (highlighted/pulsing) -->
+  <circle cx="280" cy="140" r="18" fill="none" stroke="black" stroke-width="3" opacity="0.5"/>
+  <circle cx="280" cy="140" r="12" fill="black" stroke="black" stroke-width="2"/>
+  <circle cx="280" cy="140" r="7" fill="white"/>
+  
+  <!-- Floating header with place name (spinning) -->
+  <rect x="40" y="50" width="295" height="50" fill="white" stroke="black" stroke-width="2" rx="25" opacity="0.95"/>
+  <!-- Icon on left -->
+  <circle cx="70" cy="75" r="15" fill="black"/>
+  <circle cx="70" cy="75" r="10" fill="white"/>
+  <text x="70" y="80" font-family="Arial" font-size="12" fill="black" text-anchor="middle">☕</text>
+  <!-- Place name (animated/spinning) -->
+  <text x="100" y="82" font-family="Arial" font-size="18" font-weight="bold" fill="black">The Daily Grind</text>
+  
+  <!-- Motion blur on text to indicate spinning -->
+  <line x1="100" y1="85" x2="280" y2="85" stroke="black" stroke-width="1" opacity="0.1"/>
+  
+  <!-- Floating status card with pause button (bottom) -->
+  <rect x="60" y="580" width="255" height="60" fill="white" stroke="black" stroke-width="2" rx="30" opacity="0.95"/>
   
   <!-- Status text -->
-  <text x="187" y="450" font-family="Arial" font-size="18" font-weight="bold" fill="black" text-anchor="middle">Finding your spot...</text>
+  <text x="120" y="608" font-family="Arial" font-size="14" font-weight="bold" fill="black">Finding your spot...</text>
+  <text x="120" y="626" font-family="Arial" font-size="11" fill="gray">12 places nearby</text>
   
-  <!-- Motion lines (indicating spinning) -->
-  <path d="M 100 280 Q 90 260 100 240" stroke="black" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
-  <path d="M 274 280 Q 284 300 274 320" stroke="black" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+  <!-- Pause button inside the pill -->
+  <circle cx="280" cy="610" r="20" fill="black" stroke="black" stroke-width="1"/>
+  <rect x="274" y="602" width="4" height="16" fill="white" rx="1"/>
+  <rect x="282" y="602" width="4" height="16" fill="white" rx="1"/>
   
-  <!-- Cancel button -->
-  <rect x="137" y="520" width="100" height="40" fill="white" stroke="black" stroke-width="2" rx="20"/>
-  <text x="187" y="545" font-family="Arial" font-size="14" fill="black" text-anchor="middle">Cancel</text>
+  <!-- Distance indicator along route -->
+  <rect x="210" y="220" width="60" height="22" fill="white" stroke="black" stroke-width="1" rx="11" opacity="0.9"/>
+  <text x="240" y="236" font-family="Arial" font-size="10" fill="black" text-anchor="middle">0.8 mi</text>
+  
+  <!-- Motion indicators (showing animation) -->
+  <text x="225" y="255" font-family="Arial" font-size="20" fill="black" opacity="0.3">→</text>
+  <text x="265" y="195" font-family="Arial" font-size="20" fill="black" opacity="0.3">→</text>
 </svg>
-

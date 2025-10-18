@@ -2,40 +2,83 @@
   <!-- Phone frame -->
   <rect width="375" height="667" fill="white" stroke="black" stroke-width="2"/>
   
-  <!-- Status bar -->
-  <rect width="375" height="44" fill="white"/>
-  <text x="20" y="30" font-family="Arial" font-size="12" fill="black">9:41</text>
-  <text x="320" y="30" font-family="Arial" font-size="12" fill="black">100%</text>
+  <!-- Full screen map background -->
+  <rect x="2" y="2" width="371" height="663" fill="#f5f5f5"/>
   
-  <!-- App title -->
-  <text x="187" y="80" font-family="Arial" font-size="24" font-weight="bold" fill="black" text-anchor="middle">Roulett</text>
+  <!-- Map grid lines (to indicate map) -->
+  <line x1="0" y1="150" x2="375" y2="150" stroke="#ddd" stroke-width="1"/>
+  <line x1="0" y1="300" x2="375" y2="300" stroke="#ddd" stroke-width="1"/>
+  <line x1="0" y1="450" x2="375" y2="450" stroke="#ddd" stroke-width="1"/>
+  <line x1="100" y1="0" x2="100" y2="667" stroke="#ddd" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="667" stroke="#ddd" stroke-width="1"/>
+  <line x1="300" y1="0" x2="300" y2="667" stroke="#ddd" stroke-width="1"/>
   
-  <!-- Map area -->
-  <rect x="20" y="100" width="335" height="300" fill="white" stroke="black" stroke-width="2" rx="10"/>
-  <text x="187" y="130" font-family="Arial" font-size="12" fill="gray" text-anchor="middle">[MAP VIEW]</text>
+  <!-- Map streets (curved lines for realism) -->
+  <path d="M 0 200 Q 150 180 375 220" stroke="#ccc" stroke-width="2" fill="none"/>
+  <path d="M 0 400 Q 200 380 375 410" stroke="#ccc" stroke-width="2" fill="none"/>
+  <path d="M 150 0 Q 140 300 160 667" stroke="#ccc" stroke-width="2" fill="none"/>
   
-  <!-- Map markers -->
-  <circle cx="100" cy="200" r="8" fill="black"/>
-  <circle cx="250" cy="180" r="8" fill="black"/>
-  <circle cx="180" cy="280" r="8" fill="black"/>
-  <circle cx="280" cy="320" r="8" fill="black"/>
+  <!-- Map markers (places) -->
+  <g id="marker1">
+    <circle cx="95" cy="180" r="10" fill="black"/>
+    <circle cx="95" cy="180" r="6" fill="white"/>
+  </g>
+  <g id="marker2">
+    <circle cx="260" cy="160" r="10" fill="black"/>
+    <circle cx="260" cy="160" r="6" fill="white"/>
+  </g>
+  <g id="marker3">
+    <circle cx="170" cy="280" r="10" fill="black"/>
+    <circle cx="170" cy="280" r="6" fill="white"/>
+  </g>
+  <g id="marker4">
+    <circle cx="290" cy="320" r="10" fill="black"/>
+    <circle cx="290" cy="320" r="6" fill="white"/>
+  </g>
+  <g id="marker5">
+    <circle cx="120" cy="400" r="10" fill="black"/>
+    <circle cx="120" cy="400" r="6" fill="white"/>
+  </g>
+  <g id="marker6">
+    <circle cx="310" cy="450" r="10" fill="black"/>
+    <circle cx="310" cy="450" r="6" fill="white"/>
+  </g>
   
-  <!-- User location marker (different style) -->
-  <circle cx="187" cy="250" r="12" fill="none" stroke="black" stroke-width="3"/>
-  <circle cx="187" cy="250" r="6" fill="black"/>
+  <!-- User location button (interactive, centered) -->
+  <!-- Outer pulse ring (subtle indication it's tappable) -->
+  <circle cx="187" cy="330" r="45" fill="none" stroke="black" stroke-width="1" opacity="0.15" stroke-dasharray="3,3"/>
   
-  <!-- Swipe instruction -->
-  <text x="187" y="430" font-family="Arial" font-size="16" fill="black" text-anchor="middle">Swipe up to discover</text>
-  <text x="187" y="450" font-family="Arial" font-size="16" fill="black" text-anchor="middle">your next adventure</text>
+  <!-- Button base -->
+  <circle cx="187" cy="330" r="35" fill="white" stroke="black" stroke-width="3" opacity="0.95"/>
   
-  <!-- Swipe gesture indicator -->
-  <path d="M 187 470 L 187 490 M 177 480 L 187 470 L 197 480" stroke="black" stroke-width="2" fill="none"/>
+  <!-- Inner location indicator -->
+  <circle cx="187" cy="330" r="12" fill="black"/>
+  <circle cx="187" cy="330" r="6" fill="white"/>
   
-  <!-- Bottom stats -->
-  <rect x="40" y="520" width="295" height="80" fill="white" stroke="black" stroke-width="1" rx="10"/>
-  <text x="187" y="545" font-family="Arial" font-size="12" fill="black" text-anchor="middle">12 places nearby</text>
-  <line x1="40" y1="555" x2="335" y2="555" stroke="black" stroke-width="1"/>
-  <text x="100" y="580" font-family="Arial" font-size="11" fill="gray" text-anchor="middle">Visited: 3</text>
-  <text x="270" y="580" font-family="Arial" font-size="11" fill="gray" text-anchor="middle">No-go: 1</text>
+  <!-- Dice icon to indicate randomness -->
+  <text x="187" y="315" font-family="Arial" font-size="16" fill="black" text-anchor="middle">🎲</text>
+  
+  <!-- Tap instruction text -->
+  <text x="187" y="360" font-family="Arial" font-size="10" font-weight="bold" fill="black" text-anchor="middle">TAP TO SPIN</text>
+  
+  <!-- Floating header card at top -->
+  <rect x="20" y="50" width="335" height="50" fill="white" stroke="black" stroke-width="2" rx="25" opacity="0.95"/>
+  <text x="187" y="82" font-family="Arial" font-size="20" font-weight="bold" fill="black" text-anchor="middle">Roulett</text>
+  
+  <!-- Floating stats card at bottom -->
+  <rect x="30" y="520" width="315" height="70" fill="white" stroke="black" stroke-width="2" rx="15" opacity="0.95"/>
+  <text x="187" y="548" font-family="Arial" font-size="14" font-weight="bold" fill="black" text-anchor="middle">12 places nearby</text>
+  <line x1="50" y1="558" x2="325" y2="558" stroke="#ddd" stroke-width="1"/>
+  <text x="110" y="577" font-family="Arial" font-size="11" fill="gray" text-anchor="middle">✓ Visited: 3</text>
+  <text x="265" y="577" font-family="Arial" font-size="11" fill="gray" text-anchor="middle">✗ No-go: 1</text>
+  
+  <!-- Floating compass/orientation button -->
+  <circle cx="335" cy="120" r="20" fill="white" stroke="black" stroke-width="2" opacity="0.9"/>
+  <text x="335" y="127" font-family="Arial" font-size="18" fill="black" text-anchor="middle">⊕</text>
+  
+  <!-- Floating menu button -->
+  <circle cx="40" cy="120" r="20" fill="white" stroke="black" stroke-width="2" opacity="0.9"/>
+  <line x1="33" y1="113" x2="47" y2="113" stroke="black" stroke-width="2"/>
+  <line x1="33" y1="120" x2="47" y2="120" stroke="black" stroke-width="2"/>
+  <line x1="33" y1="127" x2="47" y2="127" stroke="black" stroke-width="2"/>
 </svg>
-
