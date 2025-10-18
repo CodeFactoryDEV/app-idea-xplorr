@@ -1,0 +1,16 @@
+<svg width="200" height="60" xmlns="http://www.w3.org/2000/svg">
+  <!-- X icon with arrowheads -->
+  <g transform="translate(15, 30)">
+    <!-- Top-left to bottom-right arrow -->
+    <path d="M -12 -12 L 12 12" stroke="black" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 8 6 L 12 12 L 6 8" fill="black"/>
+    
+    <!-- Top-right to bottom-left arrow -->
+    <path d="M 12 -12 L -12 12" stroke="black" stroke-width="3" stroke-linecap="round"/>
+    <path d="M -6 8 L -12 12 L -8 6" fill="black"/>
+  </g>
+  
+  <!-- Text: xplorr -->
+  <text x="50" y="40" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="black">xplorr</text>
+</svg>
+

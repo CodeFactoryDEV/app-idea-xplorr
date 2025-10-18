@@ -1,6 +1,25 @@
 # 🎲 Name Candidates for Place Finder App
 
+> **FINAL CHOICE: xplorr.app** ✅
+
 Alternative names inspired by "roulette" that incorporate movement, discovery, and action.
+
+---
+
+## ✅ Selected Name: xplorr
+
+**Domain**: xplorr.app
+
+**Why it works:**
+- Combines "explore" with modern spelling
+- The double 'r' gives it a techy, memorable feel
+- X logo perfectly represents exploration in all directions
+- `.app` TLD is perfect for a mobile application
+- Short, pronounceable, and unique
+
+---
+
+## Alternative Names Considered
 
 ---
 

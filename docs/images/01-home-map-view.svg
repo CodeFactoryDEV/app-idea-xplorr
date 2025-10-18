@@ -19,66 +19,102 @@
   <path d="M 150 0 Q 140 300 160 667" stroke="#ccc" stroke-width="2" fill="none"/>
   
   <!-- Map markers (places) -->
+  <!-- Marker 1 - Visited -->
   <g id="marker1">
     <circle cx="95" cy="180" r="10" fill="black"/>
     <circle cx="95" cy="180" r="6" fill="white"/>
+    <!-- Checkmark for visited -->
+    <path d="M 91 180 L 94 183 L 99 176" stroke="black" stroke-width="1.5" fill="none"/>
   </g>
+  
+  <!-- Marker 2 - Available -->
   <g id="marker2">
     <circle cx="260" cy="160" r="10" fill="black"/>
     <circle cx="260" cy="160" r="6" fill="white"/>
   </g>
+  
+  <!-- Marker 3 - Visited -->
   <g id="marker3">
     <circle cx="170" cy="280" r="10" fill="black"/>
     <circle cx="170" cy="280" r="6" fill="white"/>
+    <!-- Checkmark for visited -->
+    <path d="M 166 280 L 169 283 L 174 276" stroke="black" stroke-width="1.5" fill="none"/>
   </g>
+  
+  <!-- Marker 4 - No-go -->
   <g id="marker4">
     <circle cx="290" cy="320" r="10" fill="black"/>
     <circle cx="290" cy="320" r="6" fill="white"/>
+    <!-- X mark for no-go -->
+    <line x1="287" y1="317" x2="293" y2="323" stroke="black" stroke-width="1.5"/>
+    <line x1="293" y1="317" x2="287" y2="323" stroke="black" stroke-width="1.5"/>
   </g>
+  
+  <!-- Marker 5 - Visited -->
   <g id="marker5">
     <circle cx="120" cy="400" r="10" fill="black"/>
     <circle cx="120" cy="400" r="6" fill="white"/>
+    <!-- Checkmark for visited -->
+    <path d="M 116 400 L 119 403 L 124 396" stroke="black" stroke-width="1.5" fill="none"/>
   </g>
+  
+  <!-- Marker 6 - Available -->
   <g id="marker6">
     <circle cx="310" cy="450" r="10" fill="black"/>
     <circle cx="310" cy="450" r="6" fill="white"/>
   </g>
   
-  <!-- User location button (interactive, centered) -->
+  <!-- User location button with X logo (interactive, centered) -->
   <!-- Outer pulse ring (subtle indication it's tappable) -->
   <circle cx="187" cy="330" r="45" fill="none" stroke="black" stroke-width="1" opacity="0.15" stroke-dasharray="3,3"/>
   
   <!-- Button base -->
   <circle cx="187" cy="330" r="35" fill="white" stroke="black" stroke-width="3" opacity="0.95"/>
   
-  <!-- Inner location indicator -->
-  <circle cx="187" cy="330" r="12" fill="black"/>
-  <circle cx="187" cy="330" r="6" fill="white"/>
-  
-  <!-- Dice icon to indicate randomness -->
-  <text x="187" y="315" font-family="Arial" font-size="16" fill="black" text-anchor="middle">🎲</text>
+  <!-- X logo with arrowheads -->
+  <g transform="translate(187, 330)">
+    <!-- Top-left to bottom-right arrow -->
+    <path d="M -12 -12 L 12 12" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="8,8 12,12 8,12 6,8" fill="black"/>
+    
+    <!-- Top-right to bottom-left arrow -->
+    <path d="M 12 -12 L -12 12" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="-8,8 -12,12 -12,8 -8,6" fill="black"/>
+  </g>
   
   <!-- Tap instruction text -->
-  <text x="187" y="360" font-family="Arial" font-size="10" font-weight="bold" fill="black" text-anchor="middle">TAP TO SPIN</text>
+  <text x="187" y="375" font-family="Arial" font-size="10" font-weight="bold" fill="black" text-anchor="middle">TAP TO EXPLORE</text>
   
-  <!-- Floating header card at top -->
+  <!-- Floating header card at top with integrated buttons -->
   <rect x="20" y="50" width="335" height="50" fill="white" stroke="black" stroke-width="2" rx="25" opacity="0.95"/>
-  <text x="187" y="82" font-family="Arial" font-size="20" font-weight="bold" fill="black" text-anchor="middle">Roulett</text>
   
-  <!-- Floating stats card at bottom -->
-  <rect x="30" y="520" width="315" height="70" fill="white" stroke="black" stroke-width="2" rx="15" opacity="0.95"/>
-  <text x="187" y="548" font-family="Arial" font-size="14" font-weight="bold" fill="black" text-anchor="middle">12 places nearby</text>
-  <line x1="50" y1="558" x2="325" y2="558" stroke="#ddd" stroke-width="1"/>
-  <text x="110" y="577" font-family="Arial" font-size="11" fill="gray" text-anchor="middle">✓ Visited: 3</text>
-  <text x="265" y="577" font-family="Arial" font-size="11" fill="gray" text-anchor="middle">✗ No-go: 1</text>
+  <!-- Burger menu button (left side) -->
+  <circle cx="50" cy="75" r="18" fill="white" stroke="none"/>
+  <line x1="43" y1="68" x2="57" y2="68" stroke="black" stroke-width="2"/>
+  <line x1="43" y1="75" x2="57" y2="75" stroke="black" stroke-width="2"/>
+  <line x1="43" y1="82" x2="57" y2="82" stroke="black" stroke-width="2"/>
   
-  <!-- Floating compass/orientation button -->
-  <circle cx="335" cy="120" r="20" fill="white" stroke="black" stroke-width="2" opacity="0.9"/>
-  <text x="335" y="127" font-family="Arial" font-size="18" fill="black" text-anchor="middle">⊕</text>
+  <!-- App title (center) -->
+  <text x="187" y="82" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="black" text-anchor="middle">xplorr</text>
   
-  <!-- Floating menu button -->
-  <circle cx="40" cy="120" r="20" fill="white" stroke="black" stroke-width="2" opacity="0.9"/>
-  <line x1="33" y1="113" x2="47" y2="113" stroke="black" stroke-width="2"/>
-  <line x1="33" y1="120" x2="47" y2="120" stroke="black" stroke-width="2"/>
-  <line x1="33" y1="127" x2="47" y2="127" stroke="black" stroke-width="2"/>
+  <!-- Itinerary/Globe button (right side) with badge -->
+  <circle cx="325" cy="75" r="18" fill="white" stroke="none"/>
+  <!-- Globe/Trip icon -->
+  <circle cx="325" cy="75" r="12" fill="none" stroke="black" stroke-width="2"/>
+  <path d="M 325 63 L 325 87 M 313 75 L 337 75" stroke="black" stroke-width="1.5"/>
+  <path d="M 320 67 Q 325 75 320 83" stroke="black" stroke-width="1.5" fill="none"/>
+  <path d="M 330 67 Q 325 75 330 83" stroke="black" stroke-width="1.5" fill="none"/>
+  
+  <!-- Badge counter (top-right of globe icon) -->
+  <circle cx="334" cy="66" r="8" fill="black" stroke="white" stroke-width="1"/>
+  <text x="334" y="70" font-family="Arial" font-size="9" font-weight="bold" fill="white" text-anchor="middle">3</text>
+  
+  <!-- Floating stats card at bottom (pill style) -->
+  <rect x="60" y="580" width="255" height="60" fill="white" stroke="black" stroke-width="2" rx="30" opacity="0.95"/>
+  
+  <!-- Status text -->
+  <text x="120" y="608" font-family="Arial" font-size="14" font-weight="bold" fill="black">12 places nearby</text>
+  <text x="120" y="626" font-family="Arial" font-size="11" fill="gray">✓ 3 visited • ✗ 1 no-go</text>
+  
+  <!-- Right side kept empty for visual consistency with spinning state -->
 </svg>

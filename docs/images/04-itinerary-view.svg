@@ -7,7 +7,7 @@
   <text x="20" y="30" font-family="Arial" font-size="12" fill="black">9:41</text>
   
   <!-- Header -->
-  <text x="187" y="80" font-family="Arial" font-size="24" font-weight="bold" fill="black" text-anchor="middle">Your Itinerary</text>
+  <text x="187" y="80" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="black" text-anchor="middle">Your Itinerary</text>
   
   <!-- Total time -->
   <rect x="40" y="95" width="295" height="35" fill="white" stroke="black" stroke-width="1" rx="5"/>
@@ -41,9 +41,18 @@
   <rect x="280" y="425" width="45" height="20" fill="white" stroke="black" stroke-width="1" rx="3"/>
   <text x="302" y="439" font-family="Arial" font-size="10" fill="black" text-anchor="middle">Remove</text>
   
-  <!-- Add more button -->
+  <!-- Add more button with X icon -->
   <rect x="90" y="480" width="195" height="40" fill="white" stroke="black" stroke-width="2" stroke-dasharray="5,5" rx="20"/>
-  <text x="187" y="505" font-family="Arial" font-size="14" fill="gray" text-anchor="middle">+ Add Another Place</text>
+  
+  <!-- Small X logo icon -->
+  <g transform="translate(120, 500)">
+    <path d="M -5 -5 L 5 5" stroke="gray" stroke-width="1.5" stroke-linecap="round"/>
+    <polygon points="3,3 5,5 3,5 2,3" fill="gray"/>
+    <path d="M 5 -5 L -5 5" stroke="gray" stroke-width="1.5" stroke-linecap="round"/>
+    <polygon points="-3,3 -5,5 -5,3 -3,2" fill="gray"/>
+  </g>
+  
+  <text x="205" y="505" font-family="Arial" font-size="14" fill="gray" text-anchor="middle">Add Another Place</text>
   
   <!-- Action buttons -->
   <rect x="40" y="550" width="140" height="45" fill="black" stroke="black" stroke-width="2" rx="22"/>
@@ -52,4 +61,3 @@
   <rect x="195" y="550" width="140" height="45" fill="white" stroke="black" stroke-width="2" rx="22"/>
   <text x="265" y="578" font-family="Arial" font-size="14" fill="black" text-anchor="middle">Share</text>
 </svg>
-

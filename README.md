@@ -1,21 +1,32 @@
-# 🎲 Roulett
+<p align="center">
+  <img src="docs/images/logo-full.svg" alt="xplorr" width="300"/>
+</p>
 
-> **When you're nearby but nowhere to go** — Let chance decide your next adventure
+<h1 align="center">xplorr</h1>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Status](https://img.shields.io/badge/Status-In%20Development-blue)]()
+<p align="center">
+  <strong>When you're nearby but nowhere to go</strong> — Let chance decide your next adventure
+</p>
+
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"/></a>
+  <img src="https://img.shields.io/badge/Status-In%20Development-blue" alt="Status"/>
+  <img src="https://img.shields.io/badge/Domain-xplorr.app-green" alt="Domain"/>
+</p>
+
+---
 
 ## 🤔 The Problem
 
 You're out in the city. You've got time to kill. There are dozens of places around you, but you're stuck with decision paralysis. "Where should I go?" "What should I do?" Sound familiar?
 
-**Roulett** solves this by taking the decision-making burden off your shoulders. Swipe, spin, and let serendipity guide your day.
+**xplorr** solves this by taking the decision-making burden off your shoulders. Tap, explore, and let serendipity guide your day.
 
 ---
 
-## 💡 What is Roulett?
+## 💡 What is xplorr?
 
-Roulett is a location-based discovery app that randomly selects places for you to visit based on your vicinity. No more endless scrolling through reviews or second-guessing your choices. Just pure spontaneity with a touch of intelligence.
+xplorr is a location-based discovery app that randomly selects places for you to visit based on your vicinity. No more endless scrolling through reviews or second-guessing your choices. Just pure spontaneity with a touch of intelligence.
 
 Perfect for:
 - 🚶 Locals looking to rediscover their city
@@ -27,15 +38,20 @@ Perfect for:
 
 ## ✨ Features
 
+### 🎬 Dynamic Splash Screen
+The iconic X logo greets you and rotates during exploration
+
+![Splash Screen](docs/images/00-splash-loading.svg)
+
 ### 🗺️ Interactive Map View
-See all nearby places at a glance with an intuitive map interface
+See all nearby places at a glance with an intuitive map interface. Tap the center X logo to start exploring!
 
 ![Home Map View](docs/images/01-home-map-view.svg)
 
-### 🎰 Roulette Randomizer
-Swipe up to trigger the roulette spinner — watch as it randomly selects your next destination
+### 🎯 Route Randomizer
+Watch as animated routes pulse from your location to randomly selected destinations. The X logo rotates as the algorithm chooses your next adventure.
 
-![Roulette Spinner](docs/images/02-roulette-spinner.svg)
+![Route Randomizer](docs/images/02-roulette-spinner.svg)
 
 ### 📍 Smart Place Details
 Get all the info you need: distance, ratings, estimated visit time, and more
@@ -61,7 +77,7 @@ Control your location sharing and customize your discovery preferences
 - **Visit History**: Track your adventures automatically
 - **Location Control**: Use real-time GPS or set a fixed location
 - **Itinerary Builder**: Chain multiple places into a full day plan
-- **Gesture-Based**: Intuitive swipe gestures for seamless interaction
+- **Tap-to-Explore**: Simple tap interaction for seamless discovery
 - **Offline-Ready**: Once loaded, your nearby places work without connectivity
 
 ---
@@ -70,27 +86,29 @@ Control your location sharing and customize your discovery preferences
 
 1. **Share Your Location** (or set a fixed one in settings)
 2. **View Nearby Places** on an interactive map
-3. **Swipe Up** to trigger the roulette spinner
-4. **Discover** your randomly selected destination
-5. **Accept** and add to itinerary, or **spin again**
-6. **Build** a full day's adventure with multiple places
-7. **Go!** Start your spontaneous journey
+3. **Tap the X logo** at your location to start exploring
+4. **Watch the animation** as routes pulse to random destinations
+5. **Discover** your randomly selected place
+6. **Add to itinerary** or **explore again**
+7. **Build** a full day's adventure with multiple places
+8. **Go!** Start your spontaneous journey
 
 ### The Algorithm
 
 ```
-1. User swipes → Trigger randomization
-2. Fetch places within radius (configurable)
-3. Filter out:
+1. User taps X logo → Trigger randomization
+2. X logo rotates, map animates routes
+3. Fetch places within radius (configurable)
+4. Filter out:
    - Already visited places
    - No-go tagged locations
    - Currently closed venues (optional)
-4. Weighted random selection based on:
+5. Weighted random selection based on:
    - Distance (closer = slightly higher weight)
    - Category diversity (avoid clustering)
    - Ratings (minimum threshold)
-5. Animate roulette → Present result
-6. Store selection in history
+6. Animate route pulse → Present result
+7. Store selection in history
 ```
 
 ---
@@ -132,9 +150,9 @@ Control your location sharing and customize your discovery preferences
 │  (12 places)    │
 └────────┬────────┘
          │
-         ▼ (Swipe Up)
+         ▼ (Tap X Logo)
 ┌─────────────────┐
-│ Roulette Spin   │
+│ Route Animation │
 └────────┬────────┘
          │
          ▼
@@ -145,7 +163,7 @@ Control your location sharing and customize your discovery preferences
     ┌────┴────┐
     ▼         ▼
 ┌────────┐  ┌──────────┐
-│Add to  │  │Spin Again│
+│Add to  │  │Explore   │
 │Trip    │  │          │
 └───┬────┘  └─────┬────┘
     │             │
@@ -175,11 +193,11 @@ Control your location sharing and customize your discovery preferences
 
 ## 🎨 Design Philosophy
 
-- **Minimal Friction**: Get to discovery in < 2 taps
-- **Gestural**: Natural swipe interactions
-- **Visual First**: Images and maps before text
+- **Minimal Friction**: Get to discovery in just 1 tap
+- **Visual Feedback**: Animated routes and rotating X logo
+- **Map-First**: Full-screen map with floating UI elements
 - **Trust the Randomness**: Embrace uncertainty as a feature
-- **Personality**: Playful without being childish
+- **Personality**: Playful, exploratory, adventurous
 
 ---
 
@@ -221,7 +239,7 @@ This project is in early development. Contributions, ideas, and feedback are wel
 ### Setup (Coming Soon)
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/roulett.git
+git clone https://github.com/yourusername/xplorr.git
 
 # Install dependencies
 npm install
@@ -238,9 +256,21 @@ MIT License - feel free to use this concept for your own projects!
 
 ---
 
-## 🎲 Why "Roulett"?
+## 🎯 Why "xplorr"?
 
-Because like a roulette wheel, every spin is a gamble. You might discover your new favorite spot, or you might end up somewhere totally unexpected. That's the beauty of it. Plus, `.com` was available 😉
+The name combines "explore" with the spirit of discovery. The double 'r' gives it a modern, tech-forward feel, while the X logo with arrowheads pointing in all directions perfectly represents the randomness and adventure of discovering new places. Plus, **xplorr.app** was available! 🎉
+
+### The X Logo
+
+The iconic X with arrowheads pointing outward symbolizes:
+- **Exploration** in all directions
+- **Discovery** without predetermined paths
+- **Randomness** - every direction is a possibility
+- **Connection** between you and nearby places
+
+<p align="center">
+  <img src="docs/images/logo-icon.svg" alt="xplorr X logo" width="100"/>
+</p>
 
 ---
 
@@ -248,12 +278,13 @@ Because like a roulette wheel, every spin is a gamble. You might discover your n
 
 Have ideas? Found a bug? Want to collaborate?
 
-- 📧 Email: hello@roulett.app (coming soon)
-- 🐦 Twitter: @roulettapp (coming soon)
-- 💬 Discord: [Join our community](https://discord.gg/roulett) (coming soon)
+- 📧 Email: hello@xplorr.app (coming soon)
+- 🐦 Twitter: @xplorrapp (coming soon)
+- 💬 Discord: [Join our community](https://discord.gg/xplorr) (coming soon)
+- 🌐 Website: https://xplorr.app (coming soon)
 
 ---
 
-**Remember**: The best adventures are the ones you don't plan. Let Roulett be your guide. 🎯
+**Remember**: The best adventures are the ones you don't plan. Let xplorr be your guide. 🎯
 
 

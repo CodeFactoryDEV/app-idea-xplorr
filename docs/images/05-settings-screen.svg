@@ -10,7 +10,7 @@
   <text x="20" y="75" font-family="Arial" font-size="16" fill="black">← Back</text>
   
   <!-- Header -->
-  <text x="187" y="80" font-family="Arial" font-size="24" font-weight="bold" fill="black" text-anchor="middle">Settings</text>
+  <text x="187" y="80" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="black" text-anchor="middle">Settings</text>
   
   <!-- Location section -->
   <text x="40" y="120" font-family="Arial" font-size="16" font-weight="bold" fill="black">Location</text>
@@ -51,4 +51,3 @@
   <rect x="90" y="570" width="195" height="40" fill="white" stroke="black" stroke-width="2" rx="20"/>
   <text x="187" y="595" font-family="Arial" font-size="14" fill="black" text-anchor="middle">Clear All Data</text>
 </svg>
-

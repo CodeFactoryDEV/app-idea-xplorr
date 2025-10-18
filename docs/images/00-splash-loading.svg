@@ -1,0 +1,43 @@
+<svg width="375" height="667" xmlns="http://www.w3.org/2000/svg">
+  <!-- Phone frame -->
+  <rect width="375" height="667" fill="white" stroke="black" stroke-width="2"/>
+  
+  <!-- Full screen background -->
+  <rect x="2" y="2" width="371" height="663" fill="white"/>
+  
+  <!-- Central X logo (rotating during search) -->
+  <g transform="translate(187.5, 280)">
+    <!-- Rotation indicator circles (to show it spins) -->
+    <circle r="80" fill="none" stroke="#f0f0f0" stroke-width="1" stroke-dasharray="5,5"/>
+    <circle r="95" fill="none" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+    
+    <!-- X icon with arrowheads (larger) -->
+    <g>
+      <!-- Top-left to bottom-right arrow -->
+      <path d="M -35 -35 L 35 35" stroke="black" stroke-width="6" stroke-linecap="round"/>
+      <polygon points="25,25 35,35 25,35 20,25" fill="black"/>
+      
+      <!-- Top-right to bottom-left arrow -->
+      <path d="M 35 -35 L -35 35" stroke="black" stroke-width="6" stroke-linecap="round"/>
+      <polygon points="-25,25 -35,35 -35,25 -25,20" fill="black"/>
+    </g>
+    
+    <!-- Motion arc (showing rotation) -->
+    <path d="M 60 -60 Q 75 -50 80 -35" stroke="black" stroke-width="2" fill="none" opacity="0.3"/>
+    <path d="M -60 60 Q -75 50 -80 35" stroke="black" stroke-width="2" fill="none" opacity="0.3"/>
+  </g>
+  
+  <!-- App name below logo -->
+  <text x="187" y="420" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="black" text-anchor="middle">xplorr</text>
+  
+  <!-- Tagline -->
+  <text x="187" y="450" font-family="Arial, sans-serif" font-size="14" fill="gray" text-anchor="middle">Discover nearby, randomly</text>
+  
+  <!-- Loading dots -->
+  <g transform="translate(187, 500)">
+    <circle cx="-15" cy="0" r="4" fill="black" opacity="0.8"/>
+    <circle cx="0" cy="0" r="4" fill="black" opacity="0.5"/>
+    <circle cx="15" cy="0" r="4" fill="black" opacity="0.3"/>
+  </g>
+</svg>
+
