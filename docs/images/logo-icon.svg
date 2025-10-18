@@ -1,14 +1,18 @@
 <svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
-  <!-- X icon with arrowheads -->
+  <!-- X icon with smaller X at NE tip and circle at SW -->
   <g transform="translate(30, 30)">
-    <!-- Top-left to bottom-right arrow -->
-    <path d="M -18 -18 L 18 18" stroke="black" stroke-width="4" stroke-linecap="round"/>
-    <path d="M 12 12 L 18 18 L 12 12" fill="none"/>
-    <polygon points="12,10 18,18 10,12" fill="black"/>
+    <!-- Main diagonal line: SW to NE -->
+    <line x1="-18" y1="18" x2="18" y2="-18" stroke="black" stroke-width="4" stroke-linecap="round"/>
+    <!-- Circle at SW end (origin) -->
+    <circle cx="-18" cy="18" r="5" fill="black"/>
     
-    <!-- Top-right to bottom-left arrow -->
-    <path d="M 18 -18 L -18 18" stroke="black" stroke-width="4" stroke-linecap="round"/>
-    <polygon points="-10,12 -18,18 -12,10" fill="black"/>
+    <!-- Small X at NE end (destination), rotated 45 degrees -->
+    <g transform="translate(18, -18) rotate(45)">
+      <line x1="-3" y1="-3" x2="3" y2="3" stroke="black" stroke-width="2.5"/>
+      <line x1="3" y1="-3" x2="-3" y2="3" stroke="black" stroke-width="2.5"/>
+    </g>
+    
+    <!-- Other diagonal line: NW to SE (plain) -->
+    <line x1="-18" y1="-18" x2="18" y2="18" stroke="black" stroke-width="4" stroke-linecap="round"/>
   </g>
 </svg>
-

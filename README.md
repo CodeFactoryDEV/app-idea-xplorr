@@ -218,15 +218,17 @@ MIT License - feel free to use this concept for your own projects!
 
 ## 🎯 Why "xplorr"?
 
-The name combines "explore" with the spirit of discovery. The double 'r' gives it a modern, tech-forward feel, while the X logo with arrowheads pointing in all directions perfectly represents the randomness and adventure of discovering new places. Plus, **xplorr.app** was available! 🎉
+The name combines "explore" with the spirit of discovery. The double 'r' gives it a modern, tech-forward feel, while the distinctive X logo perfectly captures the essence of journey and discovery. Plus, **xplorr.app** was available! 🎉
 
 ### The X Logo
 
-The iconic X with arrowheads pointing outward symbolizes:
-- **Exploration** in all directions
-- **Discovery** without predetermined paths
-- **Randomness** - every direction is a possibility
-- **Connection** between you and nearby places
+The iconic X logo tells the story of every exploration:
+- **Your Starting Point** (●): The circle at the southwest marks where you are now
+- **Your Destination** (✕): The small X at the northeast represents the place you'll discover
+- **The Journey**: The line connecting them is your path from here to there
+- **Infinite Possibilities**: The other diagonal represents all the directions you could explore
+
+Every tap of the xplorr logo starts a new journey from your current location (●) to an undiscovered destination (✕). It's a map, a compass, and a story all in one symbol.
 
 <p align="center">
   <img src="docs/images/logo-icon.svg" alt="xplorr X logo" width="100"/>

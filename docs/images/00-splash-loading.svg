@@ -11,15 +11,21 @@
     <circle r="80" fill="none" stroke="#f0f0f0" stroke-width="1" stroke-dasharray="5,5"/>
     <circle r="95" fill="none" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
     
-    <!-- X icon with arrowheads (larger) -->
+    <!-- X icon with small X at NE and circle at SW (larger) -->
     <g>
-      <!-- Top-left to bottom-right arrow -->
-      <path d="M -35 -35 L 35 35" stroke="black" stroke-width="6" stroke-linecap="round"/>
-      <polygon points="25,25 35,35 25,35 20,25" fill="black"/>
+      <!-- Main diagonal line: SW to NE -->
+      <line x1="-35" y1="35" x2="35" y2="-35" stroke="black" stroke-width="6" stroke-linecap="round"/>
+      <!-- Circle at SW end (origin) -->
+      <circle cx="-35" cy="35" r="8" fill="black"/>
       
-      <!-- Top-right to bottom-left arrow -->
-      <path d="M 35 -35 L -35 35" stroke="black" stroke-width="6" stroke-linecap="round"/>
-      <polygon points="-25,25 -35,35 -35,25 -25,20" fill="black"/>
+      <!-- Small X at NE end (destination), rotated 45 degrees -->
+      <g transform="translate(35, -35) rotate(45)">
+        <line x1="-6" y1="-6" x2="6" y2="6" stroke="black" stroke-width="4"/>
+        <line x1="6" y1="-6" x2="-6" y2="6" stroke="black" stroke-width="4"/>
+      </g>
+      
+      <!-- Other diagonal line: NW to SE (plain) -->
+      <line x1="-35" y1="-35" x2="35" y2="35" stroke="black" stroke-width="6" stroke-linecap="round"/>
     </g>
     
     <!-- Motion arc (showing rotation) -->
@@ -40,4 +46,3 @@
     <circle cx="15" cy="0" r="4" fill="black" opacity="0.3"/>
   </g>
 </svg>
-
