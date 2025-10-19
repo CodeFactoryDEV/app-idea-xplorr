@@ -427,9 +427,11 @@ struct MapView: View {
 
 ### Randomizer Screen Example
 
-Below is a realistic mockup showing how the randomizer screen implements Apple's Liquid Glass design principles with authentic Apple Maps integration:
+Below is a **fully animated mockup** showing how the randomizer screen implements Apple's Liquid Glass design principles with authentic Apple Maps integration:
 
 ![iOS Randomizer Screen](./images/ios-randomizer-mockup.svg)
+
+*This is a live animation showing the blue selector moving back and forth between "Yardstick Coffee" and "Manila Cemetery" in a continuous loop (4-second cycle). Watch the top header text fade between place names as the selector jumps between locations.*
 
 *Featuring real Manila, Philippines map data with streets like Evangelista St, Bagtikan Street, and Hayes Street. POIs include Yardstick Coffee, Kolesiyum ng Bayan, Don Bosco, and more.*
 
@@ -465,12 +467,17 @@ Below is a realistic mockup showing how the randomizer screen implements Apple's
 // Important: Background must be visible through the material!
 ```
 
-**4. Animation Details**
-- **Spinning Circle Icon** (top left): Continuous rotation at 1.5s duration
-- **X Logo Center**: 2-second rotation with spring physics
-- **Blue Jump Selector**: Randomly appears at different place markers with concentric pulse rings
-- **Ghost Trails**: Previous selection positions fade out (40% → 25% → 0% opacity)
-- **Jump Path Lines**: Subtle dashed lines connecting jump sequence
+**4. Animation Details** *(Visible in the animated mockup above)*
+- **X Logo Center**: Continuous 2-second rotation
+- **Blue Selector Movement**: 4-second loop moving between Yardstick Coffee ↔ Manila Cemetery
+- **Pulse Rings**: Three concentric rings that expand/contract (48px → 40px → 48px) on 2s cycle
+- **Header Content Switch**: Instantly changes at 2-second mark (no fade) including:
+  - **Left**: 32×32px place thumbnail (coffee shop interior ↔ green cemetery lawn)
+  - **Center**: Place name text
+  - **Right**: Category icon (coffee cup ↔ cross symbol)
+  - **Timing**: Shows "Yardstick Coffee" for 2s, then switches to "Manila Cemetery" for 2s
+- **Motion Trail**: Subtle blue circles appear along the travel path during jumps
+- **Position Timing**: Coffee (0s) → Mid-transit (1s) → Cemetery (2s) → Mid-transit (3s) → Coffee (4s)
 
 **5. iOS System Elements**
 - **Status Bar**: Shows time (9:41), cellular, WiFi, battery

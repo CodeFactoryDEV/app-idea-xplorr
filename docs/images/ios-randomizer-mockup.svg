@@ -181,40 +181,74 @@
       <circle cx="320" cy="450" r="2" fill="white"/>
     </g>
     
-    <!-- Blue selector jumping between POIs -->
+    <!-- Blue selector animated between Yardstick Coffee and Manila Cemetery -->
     <g>
-      <!-- Trail effect showing path of jumps -->
+      <!-- Trail markers at other locations (static) -->
       <g opacity="0.15">
-        <circle cx="320" cy="180" r="8" fill="#007AFF"/>
-        <circle cx="250" cy="580" r="8" fill="#007AFF"/>
-        <circle cx="320" cy="450" r="8" fill="#007AFF"/>
+        <circle cx="320" cy="180" r="6" fill="#007AFF"/>
+        <circle cx="140" cy="380" r="6" fill="#007AFF"/>
+        <circle cx="250" cy="580" r="6" fill="#007AFF"/>
       </g>
       
-      <!-- Moving blue circle at different positions (snapshot of animation) -->
-      <!-- Position 1: Starting to leave Museum -->
-      <g opacity="0.3">
-        <circle cx="320" cy="180" r="10" fill="#007AFF"/>
+      <!-- Animated blue selector -->
+      <g>
+        <!-- Outer pulse ring (animated position and size) -->
+        <circle r="48" fill="none" stroke="#007AFF" stroke-width="1.5">
+          <animate attributeName="cx" values="280;300;320;300;280" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="250;330;450;330;250" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.15;0.15;0.15;0.15;0.15" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="r" values="48;40;48;40;48" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Middle pulse ring -->
+        <circle r="38" fill="none" stroke="#007AFF" stroke-width="2">
+          <animate attributeName="cx" values="280;300;320;300;280" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="250;330;450;330;250" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.25;0.25;0.25;0.25;0.25" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="r" values="38;34;38;34;38" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Inner pulse ring -->
+        <circle r="28" fill="none" stroke="#007AFF" stroke-width="2.5">
+          <animate attributeName="cx" values="280;300;320;300;280" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="250;330;450;330;250" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.4;0.4;0.4;0.4;0.4" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="r" values="28;26;28;26;28" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Main selector outer glow -->
+        <circle r="24" fill="#007AFF" opacity="0.2">
+          <animate attributeName="cx" values="280;300;320;300;280" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="250;330;450;330;250" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Main selector circle -->
+        <circle r="18" fill="#007AFF" opacity="0.95">
+          <animate attributeName="cx" values="280;300;320;300;280" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="250;330;450;330;250" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- White center dot -->
+        <circle r="10" fill="white">
+          <animate attributeName="cx" values="280;300;320;300;280" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="250;330;450;330;250" dur="4s" repeatCount="indefinite"/>
+        </circle>
       </g>
       
-      <!-- Position 2: Mid-jump between Museum and Restaurant -->
-      <g opacity="0.5">
-        <circle cx="230" cy="280" r="12" fill="#007AFF"/>
-        <circle cx="230" cy="280" r="6" fill="white"/>
+      <!-- Motion trail (fading) - appears during transition -->
+      <g>
+        <circle r="12" fill="#007AFF">
+          <animate attributeName="cx" values="280;285;290;295;280" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="250;270;300;340;250" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.2;0.3;0.2;0" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        
+        <circle r="12" fill="#007AFF">
+          <animate attributeName="cx" values="320;310;300;290;320" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="450;410;370;330;450" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0.2;0.3;0.2;0" dur="4s" repeatCount="indefinite"/>
+        </circle>
       </g>
-      
-      <!-- Position 3: Arriving at Restaurant -->
-      <g opacity="0.7">
-        <circle cx="140" cy="380" r="14" fill="#007AFF"/>
-        <circle cx="140" cy="380" r="7" fill="white"/>
-      </g>
-      
-      <!-- Position 4: Currently at Coffee Shop (brightest) -->
-      <circle cx="280" cy="250" r="18" fill="#007AFF" opacity="0.9"/>
-      <circle cx="280" cy="250" r="10" fill="white"/>
-      
-      <!-- Pulse ring around current position -->
-      <circle cx="280" cy="250" r="28" fill="none" stroke="#007AFF" stroke-width="2" opacity="0.4"/>
-      <circle cx="280" cy="250" r="38" fill="none" stroke="#007AFF" stroke-width="1.5" opacity="0.2"/>
     </g>
     
     <!-- Status bar (iOS style) -->
@@ -246,7 +280,7 @@
     <!-- Dynamic Island (iOS 16+) -->
     <rect x="125" y="28" width="140" height="37" fill="black" rx="18.5"/>
     
-    <!-- Top header card (Liquid Glass) -->
+    <!-- Top header card (Liquid Glass) - showing transition -->
     <g transform="translate(195, 120)">
       <!-- Glass background with blur -->
       <rect x="-140" y="-28" width="280" height="56" fill="white" opacity="0.25" rx="28" filter="url(#glassBlur)"/>
@@ -254,10 +288,72 @@
       <!-- Subtle border for glass edge -->
       <rect x="-140" y="-28" width="280" height="56" fill="none" stroke="white" stroke-width="1.5" opacity="0.6" rx="28"/>
       
-      <!-- Content -->
+      <!-- Content - switches between locations (no fade) -->
       <g transform="translate(0, 0)">
-        <!-- Place name with vibrancy -->
-        <text x="0" y="6" font-family="-apple-system, SF Pro Display" font-size="18" font-weight="600" fill="black" text-anchor="middle" opacity="0.85">Yardstick Coffee</text>
+        <!-- Yardstick Coffee content -->
+        <g opacity="0.85">
+          <!-- Discrete visibility: show 0-2s, hide 2-4s -->
+          <animate attributeName="opacity" values="0.85;0.85;0;0;0.85" keyTimes="0;0.49;0.5;0.99;1" dur="4s" repeatCount="indefinite"/>
+          
+          <!-- Left: Coffee shop image -->
+          <g transform="translate(-115, 0)">
+            <rect x="-16" y="-16" width="32" height="32" fill="#f5f3ee" rx="6"/>
+            <!-- Coffee shop interior -->
+            <rect x="-12" y="-8" width="24" height="16" fill="#8B4513" rx="2"/>
+            <rect x="-10" y="-6" width="8" height="12" fill="#D2691E"/>
+            <rect x="2" y="-6" width="8" height="12" fill="#D2691E"/>
+            <!-- Table -->
+            <rect x="-8" y="6" width="16" height="4" fill="#654321" rx="1"/>
+          </g>
+          
+          <!-- Center: Text -->
+          <text x="0" y="6" font-family="-apple-system, SF Pro Display" font-size="17" font-weight="600" fill="black" text-anchor="middle">
+            Yardstick Coffee
+          </text>
+          
+          <!-- Right: Coffee cup icon -->
+          <g transform="translate(110, 0)">
+            <circle cx="0" cy="0" r="14" fill="#FF6B35" opacity="0.15"/>
+            <!-- Coffee cup -->
+            <path d="M -5 -4 L -6 4 L 6 4 L 5 -4 Z" fill="#FF6B35"/>
+            <ellipse cx="0" cy="-4" rx="5" ry="2" fill="#8B4513"/>
+            <path d="M 6 -1 Q 9 -1 9 2 Q 9 4 7 4" stroke="#FF6B35" stroke-width="1.5" fill="none"/>
+            <!-- Steam -->
+            <path d="M -2 -6 Q -2 -8 -1 -9" stroke="#FF6B35" stroke-width="1" fill="none" opacity="0.6"/>
+            <path d="M 2 -6 Q 2 -8 1 -9" stroke="#FF6B35" stroke-width="1" fill="none" opacity="0.6"/>
+          </g>
+        </g>
+        
+        <!-- Manila Cemetery content -->
+        <g opacity="0">
+          <!-- Discrete visibility: hide 0-2s, show 2-4s -->
+          <animate attributeName="opacity" values="0;0;0.85;0.85;0" keyTimes="0;0.49;0.5;0.99;1" dur="4s" repeatCount="indefinite"/>
+          
+          <!-- Left: Cemetery/lawn image -->
+          <g transform="translate(-115, 0)">
+            <rect x="-16" y="-16" width="32" height="32" fill="#b8e6b8" rx="6"/>
+            <!-- Grass texture -->
+            <rect x="-14" y="-12" width="28" height="24" fill="#90C090" rx="4"/>
+            <!-- Trees -->
+            <circle cx="-8" cy="-4" r="4" fill="#5B8C5A"/>
+            <circle cx="8" cy="-4" r="4" fill="#5B8C5A"/>
+            <!-- Path -->
+            <rect x="-2" y="-10" width="4" height="18" fill="#C4BEB0" opacity="0.6"/>
+          </g>
+          
+          <!-- Center: Text -->
+          <text x="0" y="6" font-family="-apple-system, SF Pro Display" font-size="17" font-weight="600" fill="black" text-anchor="middle">
+            Manila Cemetery
+          </text>
+          
+          <!-- Right: Cross icon -->
+          <g transform="translate(110, 0)">
+            <circle cx="0" cy="0" r="14" fill="#8a8577" opacity="0.15"/>
+            <!-- Cross -->
+            <rect x="-1.5" y="-7" width="3" height="14" fill="#8a8577" rx="1"/>
+            <rect x="-5" y="-3" width="10" height="3" fill="#8a8577" rx="1"/>
+          </g>
+        </g>
       </g>
     </g>
     
