@@ -36,10 +36,74 @@ This document provides backend-specific development guidelines using Spring Boot
 - Google Places API integration
 - Foursquare API (fallback)
 
+### Cloud Infrastructure
+- **AWS (Amazon Web Services)** - Exclusive cloud provider for all services
+- **AWS S3** - Object storage for place images and media
+- **AWS RDS** - Managed PostgreSQL database (production)
+- **AWS Elastic Beanstalk** / **ECS** - Application hosting
+- **AWS CloudFront** - CDN for fast image delivery
+
 ### Monitoring & Logging
 - **Spring Boot Actuator** - Health checks and metrics
 - **SLF4J** + **Logback** - Logging
 - **Micrometer** - Application metrics
+
+---
+
+## 📝 Content Management Strategy
+
+### MVP Approach (Manual Curation)
+
+For the MVP phase, place data will be manually curated and inserted:
+
+**Manual Data Entry:**
+- Places will be manually added to PostgreSQL database
+- Images and media uploaded directly to AWS S3 buckets
+- No automated curation interface
+- Admin access via database client (pgAdmin, DBeaver)
+
+**Process:**
+```bash
+# Example manual insertion
+INSERT INTO places (id, name, location, categories, rating, photos)
+VALUES (
+  'place-001',
+  'The Daily Grind',
+  ST_SetSRID(ST_MakePoint(-122.4194, 37.7749), 4326),
+  ARRAY['cafe', 'coffee'],
+  4.5,
+  ARRAY['https://xplorr-images.s3.amazonaws.com/place-001/photo1.jpg']
+);
+```
+
+**AWS S3 Structure:**
+```
+xplorr-images/
+├── place-001/
+│   ├── photo1.jpg
+│   ├── photo2.jpg
+│   └── thumbnail.jpg
+├── place-002/
+│   └── ...
+```
+
+### Post-MVP: Automated Curation Workflow
+
+**Planned Features (Future):**
+- Admin web dashboard for place management
+- Bulk import from Google Places API
+- Image upload and moderation interface
+- Automated photo optimization and CDN distribution
+- Place verification and approval workflow
+- Community contributions and reviews
+
+**Future Tech Stack:**
+- Admin panel (React or Spring Boot + Thymeleaf)
+- AWS Lambda for image processing
+- AWS Step Functions for curation workflow
+- AWS Rekognition for image content moderation
+
+> **Note:** The current API is designed to be forward-compatible with automated curation. All endpoints will work seamlessly once the curation system is implemented.
 
 ---
 
@@ -558,27 +622,132 @@ volumes:
   postgres_data:
 ```
 
-### Cloud Platforms
+### AWS Deployment (Primary)
 
-**Heroku:**
+> **Note:** xplorr exclusively uses AWS for all cloud infrastructure.
+
+#### AWS Elastic Beanstalk
+
+**Initial Setup:**
 ```bash
-heroku create xplorr-api
-heroku addons:create heroku-postgresql:hobby-dev
-heroku config:set SPRING_PROFILES_ACTIVE=prod
-git push heroku main
+# Install EB CLI
+pip install awsebcli
+
+# Initialize Elastic Beanstalk
+eb init xplorr-api --platform java-17 --region us-east-1
+
+# Create environment
+eb create xplorr-api-prod \
+  --database.engine postgres \
+  --database.size 5 \
+  --instance-type t3.small
+
+# Configure environment variables
+eb setenv SPRING_PROFILES_ACTIVE=prod \
+  AWS_S3_BUCKET=xplorr-images \
+  AWS_REGION=us-east-1
+
+# Deploy
+eb deploy
 ```
 
-**Railway:**
-- Connect GitHub repository
-- Add PostgreSQL service
-- Configure environment variables
-- Deploy automatically on push
+#### AWS RDS PostgreSQL
 
-**AWS Elastic Beanstalk:**
+**Setup:**
 ```bash
-eb init xplorr-api
-eb create xplorr-api-env
-eb deploy
+# RDS will be created automatically by EB or manually via console
+# Enable PostGIS extension after creation:
+psql -h your-rds-endpoint.amazonaws.com -U postgres -d xplorr
+CREATE EXTENSION postgis;
+```
+
+**Configuration:**
+```yaml
+# application-prod.yml
+spring:
+  datasource:
+    url: jdbc:postgresql://${RDS_HOSTNAME}:${RDS_PORT}/${RDS_DB_NAME}
+    username: ${RDS_USERNAME}
+    password: ${RDS_PASSWORD}
+```
+
+#### AWS S3 Configuration
+
+**Create S3 Bucket:**
+```bash
+# Via AWS CLI
+aws s3 mb s3://xplorr-images --region us-east-1
+
+# Configure bucket for public read access (images only)
+aws s3api put-bucket-cors --bucket xplorr-images --cors-configuration file://cors.json
+```
+
+**CORS Configuration (cors.json):**
+```json
+{
+  "CORSRules": [{
+    "AllowedOrigins": ["*"],
+    "AllowedMethods": ["GET"],
+    "AllowedHeaders": ["*"]
+  }]
+}
+```
+
+**Spring Boot S3 Integration:**
+```java
+// Add to pom.xml
+<dependency>
+    <groupId>com.amazonaws</groupId>
+    <artifactId>aws-java-sdk-s3</artifactId>
+    <version>1.12.529</version>
+</dependency>
+
+// Service class
+@Service
+public class S3Service {
+    private final AmazonS3 s3Client;
+    
+    @Value("${aws.s3.bucket}")
+    private String bucketName;
+    
+    public String uploadFile(MultipartFile file, String placeId) {
+        String key = placeId + "/" + file.getOriginalFilename();
+        s3Client.putObject(bucketName, key, file.getInputStream(), null);
+        return s3Client.getUrl(bucketName, key).toString();
+    }
+}
+```
+
+#### AWS CloudFront (CDN)
+
+**Setup:**
+- Create CloudFront distribution pointing to S3 bucket
+- Configure caching policies for images (long TTL)
+- Use CloudFront URLs in API responses for fast delivery
+
+```yaml
+# application-prod.yml
+aws:
+  s3:
+    bucket: xplorr-images
+    region: us-east-1
+  cloudfront:
+    domain: d1234567890.cloudfront.net
+```
+
+#### AWS ECS (Alternative to Elastic Beanstalk)
+
+For more control, use ECS with Fargate:
+```bash
+# Create ECR repository
+aws ecr create-repository --repository-name xplorr-api
+
+# Build and push Docker image
+docker build -t xplorr-api .
+docker tag xplorr-api:latest <account-id>.dkr.ecr.us-east-1.amazonaws.com/xplorr-api:latest
+docker push <account-id>.dkr.ecr.us-east-1.amazonaws.com/xplorr-api:latest
+
+# Create ECS cluster and service (via console or CLI)
 ```
 
 ---
@@ -723,15 +892,146 @@ CREATE INDEX idx_places_category ON places USING GIN(categories);
 
 ---
 
+## 🗄️ Manual Data Management (MVP)
+
+### Database Setup
+
+**Create Database Schema:**
+```sql
+-- Run after PostGIS extension is enabled
+CREATE TABLE places (
+    id VARCHAR(255) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    location GEOMETRY(Point, 4326) NOT NULL,
+    categories TEXT[] NOT NULL,
+    rating DECIMAL(2,1),
+    price_level INTEGER,
+    photos TEXT[],
+    hours VARCHAR(500),
+    estimated_visit_time INTEGER,
+    cached_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create spatial index
+CREATE INDEX idx_places_location ON places USING GIST(location);
+```
+
+**Manual Place Insertion:**
+```sql
+-- Example: Insert a coffee shop
+INSERT INTO places (
+    id, 
+    name, 
+    location, 
+    categories, 
+    rating, 
+    price_level,
+    photos, 
+    hours, 
+    estimated_visit_time
+) VALUES (
+    'daily-grind-001',
+    'The Daily Grind',
+    ST_SetSRID(ST_MakePoint(-122.4194, 37.7749), 4326),
+    ARRAY['cafe', 'coffee', 'breakfast'],
+    4.5,
+    2,
+    ARRAY[
+        'https://d1234567890.cloudfront.net/daily-grind-001/exterior.jpg',
+        'https://d1234567890.cloudfront.net/daily-grind-001/interior.jpg'
+    ],
+    'Mon-Fri: 7:00 AM - 8:00 PM, Sat-Sun: 8:00 AM - 9:00 PM',
+    45
+);
+
+-- Verify insertion
+SELECT 
+    id,
+    name,
+    ST_AsText(location) as coordinates,
+    categories,
+    rating
+FROM places
+WHERE id = 'daily-grind-001';
+```
+
+### AWS S3 Image Upload
+
+**Upload via AWS CLI:**
+```bash
+# Upload place images
+aws s3 cp ./images/daily-grind-001/ \
+    s3://xplorr-images/daily-grind-001/ \
+    --recursive \
+    --acl public-read
+
+# Verify upload
+aws s3 ls s3://xplorr-images/daily-grind-001/
+```
+
+**Upload via AWS Console:**
+1. Navigate to S3 bucket: `xplorr-images`
+2. Create folder with place ID: `daily-grind-001/`
+3. Upload images (jpg, png, webp)
+4. Set permissions to public-read for images
+
+**Image Naming Convention:**
+```
+{place-id}/
+  ├── thumbnail.jpg      (300x300, for markers)
+  ├── hero.jpg          (1200x800, for detail view)
+  ├── photo-01.jpg      (800x600, gallery)
+  ├── photo-02.jpg
+  └── photo-03.jpg
+```
+
+### Data Import Script (Optional)
+
+```java
+// Utility class for bulk import
+@Component
+public class PlaceDataImporter {
+    
+    @Autowired
+    private PlaceRepository placeRepository;
+    
+    @Autowired
+    private S3Service s3Service;
+    
+    public void importFromCSV(String filePath) throws IOException {
+        // Read CSV file
+        // Parse place data
+        // Insert into database
+        // Log results
+    }
+    
+    public void importFromGooglePlaces(String placeId) {
+        // Fetch from Google Places API
+        // Transform to our model
+        // Save to database
+        // Download and upload images to S3
+    }
+}
+```
+
+---
+
 ## 📚 Additional Resources
 
+### Internal Documentation
 - **[Main Technical Implementation](./technical_implementation.md)** - Overview and architecture
 - **[iOS Development Guidelines](./technical_implementation_ios.md)** - iOS/Swift/SwiftUI guide
+
+### External Resources
 - [Spring Boot Documentation](https://spring.io/projects/spring-boot)
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
 - [PostGIS Documentation](https://postgis.net/documentation/)
+- [AWS Elastic Beanstalk Documentation](https://docs.aws.amazon.com/elasticbeanstalk/)
+- [AWS S3 Documentation](https://docs.aws.amazon.com/s3/)
+- [AWS RDS PostgreSQL](https://docs.aws.amazon.com/rds/index.html)
 
 ---
 
 **Last Updated:** October 18, 2025
+**Cloud Provider:** AWS (Exclusive)
 

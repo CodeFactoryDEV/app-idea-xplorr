@@ -80,8 +80,11 @@ For detailed implementation guides, please refer to the platform-specific docume
 - **PostgreSQL** with **PostGIS**
 - **Spring Data JPA**
 - **JWT** authentication
+- **AWS Cloud Infrastructure** (exclusive)
 
 **See: [Backend Implementation Guide](./technical_implementation_backend.md)**
+
+> **MVP Note:** Place data will be manually curated and inserted into the database. Post-MVP will include an automated curation workflow for adding locations.
 
 ---
 
@@ -96,15 +99,28 @@ For detailed implementation guides, please refer to the platform-specific docume
 └──────┬──────┘
        │ HTTPS/REST
        │
-┌──────▼──────────┐
-│  Spring Boot    │
-│     API         │
-└──────┬──────────┘
-       │
-┌──────▼──────────┐      ┌────────────────┐
-│  PostgreSQL     │      │ External APIs  │
-│  + PostGIS      │      │ (Google Maps)  │
-└─────────────────┘      └────────────────┘
+┌──────▼──────────────────────────────┐
+│         AWS Cloud (Exclusive)       │
+│  ┌────────────────────────────┐    │
+│  │   Spring Boot API          │    │
+│  │   (Elastic Beanstalk/ECS)  │    │
+│  └──────┬──────────────┬──────┘    │
+│         │              │            │
+│  ┌──────▼──────┐  ┌───▼─────────┐ │
+│  │ RDS Postgres│  │   AWS S3    │ │
+│  │  + PostGIS  │  │  (Images)   │ │
+│  └─────────────┘  └──────┬──────┘ │
+│                           │         │
+│                    ┌──────▼──────┐ │
+│                    │ CloudFront  │ │
+│                    │    (CDN)    │ │
+│                    └─────────────┘ │
+└─────────────────────────────────────┘
+                │
+        ┌───────▼────────┐
+        │ External APIs  │
+        │ (Google Maps)  │
+        └────────────────┘
 ```
 
 ### Communication Flow
@@ -238,10 +254,12 @@ Both iOS (Swift) and Backend (Java) use equivalent models:
 - **App Store**: Production release
 - Xcode Cloud for CI/CD
 
-### Backend API
+### Backend API (AWS Exclusive)
+- **AWS Elastic Beanstalk** or **AWS ECS**: Application hosting
+- **AWS RDS**: Managed PostgreSQL database with PostGIS
+- **AWS S3**: Image and media storage
+- **AWS CloudFront**: CDN for fast content delivery
 - **Docker**: Containerized deployment
-- **Railway/Heroku**: Cloud hosting
-- **PostgreSQL**: Managed database service
 - GitHub Actions for CI/CD
 
 ---
