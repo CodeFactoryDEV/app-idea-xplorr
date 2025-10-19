@@ -181,28 +181,40 @@
       <circle cx="320" cy="450" r="2" fill="white"/>
     </g>
     
-    <!-- Jumping blue selector (showing multiple positions to simulate random jumping) -->
+    <!-- Blue selector jumping between POIs -->
     <g>
-      <!-- Current position at Coffee Shop (brightest) -->
-      <circle cx="280" cy="250" r="32" fill="#007AFF" opacity="0.15"/>
-      <circle cx="280" cy="250" r="24" fill="#007AFF" opacity="0.25"/>
-      <circle cx="280" cy="250" r="16" fill="#007AFF" opacity="0.5"/>
-      <circle cx="280" cy="250" r="12" fill="#007AFF"/>
-      
-      <!-- Ghost/trail positions (previous jumps - fading) -->
-      <g opacity="0.4">
-        <circle cx="140" cy="380" r="28" fill="#007AFF" opacity="0.15"/>
-        <circle cx="140" cy="380" r="20" fill="#007AFF" opacity="0.25"/>
-        <circle cx="140" cy="380" r="12" fill="#007AFF" opacity="0.4"/>
+      <!-- Trail effect showing path of jumps -->
+      <g opacity="0.15">
+        <circle cx="320" cy="180" r="8" fill="#007AFF"/>
+        <circle cx="250" cy="580" r="8" fill="#007AFF"/>
+        <circle cx="320" cy="450" r="8" fill="#007AFF"/>
       </g>
       
-      <g opacity="0.25">
-        <circle cx="320" cy="180" r="24" fill="#007AFF" opacity="0.15"/>
-        <circle cx="320" cy="180" r="16" fill="#007AFF" opacity="0.3"/>
+      <!-- Moving blue circle at different positions (snapshot of animation) -->
+      <!-- Position 1: Starting to leave Museum -->
+      <g opacity="0.3">
+        <circle cx="320" cy="180" r="10" fill="#007AFF"/>
       </g>
       
-      <!-- Subtle connection lines showing jump path -->
-      <path d="M 320 180 L 140 380 L 280 250" stroke="#007AFF" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round" fill="none" opacity="0.2"/>
+      <!-- Position 2: Mid-jump between Museum and Restaurant -->
+      <g opacity="0.5">
+        <circle cx="230" cy="280" r="12" fill="#007AFF"/>
+        <circle cx="230" cy="280" r="6" fill="white"/>
+      </g>
+      
+      <!-- Position 3: Arriving at Restaurant -->
+      <g opacity="0.7">
+        <circle cx="140" cy="380" r="14" fill="#007AFF"/>
+        <circle cx="140" cy="380" r="7" fill="white"/>
+      </g>
+      
+      <!-- Position 4: Currently at Coffee Shop (brightest) -->
+      <circle cx="280" cy="250" r="18" fill="#007AFF" opacity="0.9"/>
+      <circle cx="280" cy="250" r="10" fill="white"/>
+      
+      <!-- Pulse ring around current position -->
+      <circle cx="280" cy="250" r="28" fill="none" stroke="#007AFF" stroke-width="2" opacity="0.4"/>
+      <circle cx="280" cy="250" r="38" fill="none" stroke="#007AFF" stroke-width="1.5" opacity="0.2"/>
     </g>
     
     <!-- Status bar (iOS style) -->
@@ -244,12 +256,6 @@
       
       <!-- Content -->
       <g transform="translate(0, 0)">
-        <!-- Spinning icon (left) -->
-        <g transform="translate(-100, 0)">
-          <circle cx="0" cy="0" r="16" fill="none" stroke="#007AFF" stroke-width="2.5" stroke-dasharray="50 25"/>
-          <animateTransform attributeName="transform" type="rotate" from="0 -100 0" to="360 -100 0" dur="1.5s" repeatCount="indefinite"/>
-        </g>
-        
         <!-- Place name with vibrancy -->
         <text x="0" y="6" font-family="-apple-system, SF Pro Display" font-size="18" font-weight="600" fill="black" text-anchor="middle" opacity="0.85">Yardstick Coffee</text>
       </g>
