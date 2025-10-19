@@ -427,9 +427,11 @@ struct MapView: View {
 
 ### Randomizer Screen Example
 
-Below is a realistic mockup showing how the randomizer screen implements Apple's Liquid Glass design principles with MapKit integration:
+Below is a realistic mockup showing how the randomizer screen implements Apple's Liquid Glass design principles with authentic Apple Maps integration:
 
 ![iOS Randomizer Screen](./images/ios-randomizer-mockup.svg)
+
+*Featuring real Manila, Philippines map data with streets like Evangelista St, Bagtikan Street, and Hayes Street. POIs include Yardstick Coffee, Kolesiyum ng Bayan, Don Bosco, and more.*
 
 **Key Design Elements:**
 
@@ -440,10 +442,14 @@ Below is a realistic mockup showing how the randomizer screen implements Apple's
 - **Key Principle**: Background should be clearly visible through all glass surfaces
 
 **2. Apple Maps Integration**
-- Full-screen MapKit view as base layer
-- Street lines and landmarks rendered in Apple Maps style
-- Multiple available place markers (green circles with white centers)
-- Blue selection indicator randomly jumping between locations
+- Full-screen MapKit view with authentic Apple Maps beige color scheme
+- **Street Network**: Main roads, secondary streets, and highway grid pattern
+- **Geographic Features**: Parks (green), water/rivers (blue), buildings (subtle beige)
+- **POI Labels**: White rounded rectangles with emoji icons and place names
+- **Highway Markers**: Blue (AH26), yellow (P2), white bordered (C-4) shields
+- **Street Names**: Gray text at slight rotation following street direction
+- **Multiple Place Markers**: Color-coded by category (coffee, dining, culture, etc.)
+- **Blue Jump Selector**: Randomly jumps between POI locations with pulse animation
 
 **3. Visual Hierarchy**
 ```swift
@@ -571,10 +577,13 @@ struct PulseRing: View {
 
 **Color Palette:**
 - Primary Action: `#007AFF` (iOS Blue)
-- Success/Available: `#34C759` (iOS Green)
+- POI Categories: Coffee `#FF6B35`, Dining `#34C759`, Culture `#e64b8d`, Education `#5B5B5B`
 - Glass Material: `.ultraThinMaterial` with `rgba(255, 255, 255, 0.25)` tint (highly translucent!)
 - Glass Border: `rgba(255, 255, 255, 0.6)` for edge definition
-- Map Background: `#e8f4f8` to `#c2dfe8` gradient
+- Map Background: `#f5f3ee` to `#ebe6dc` (Apple Maps beige gradient)
+- Map Streets: `#c4beb0` (main roads), `#d4cfc3` (secondary streets)
+- Map Elements: Parks `#b8e6b8`, Water `#b3d9e6`, Highway `#fdd870`
+- Map Labels: `#8a8577` (street names and POI text)
 - Text on Glass: Black at 70-85% opacity for proper vibrancy effect
 
 This design ensures the app feels native to iOS while maintaining the xplorr brand identity through the custom X logo and interaction patterns.

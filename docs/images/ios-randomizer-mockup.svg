@@ -3,12 +3,18 @@
   
   <!-- Background: Apple Maps style -->
   <defs>
-    <!-- Gradient for map background -->
+    <!-- Gradient for map background (Apple Maps beige) -->
     <linearGradient id="mapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#e8f4f8;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#d4e9f0;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#c2dfe8;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#f5f3ee;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f0ede5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ebe6dc;stop-opacity:1" />
     </linearGradient>
+    
+    <!-- Pattern for small streets -->
+    <pattern id="streetPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="50" x2="100" y2="50" stroke="#d4cfc3" stroke-width="1.5"/>
+      <line x1="50" y1="0" x2="50" y2="100" stroke="#d4cfc3" stroke-width="1.5"/>
+    </pattern>
     
     <!-- Filter for glass blur effect -->
     <filter id="glassBlur" x="-50%" y="-50%" width="200%" height="200%">
@@ -38,84 +44,165 @@
       <rect x="0" y="0" width="390" height="844" rx="47"/>
     </clipPath>
     
-    <!-- Apple Maps background -->
+    <!-- Apple Maps background (beige) -->
     <rect width="390" height="844" fill="url(#mapGradient)"/>
     
-    <!-- Map street lines (simplified Apple Maps style) -->
-    <g opacity="0.4">
-      <path d="M 50 200 L 340 220" stroke="#a0a0a0" stroke-width="3" stroke-linecap="round"/>
-      <path d="M 80 150 L 300 180" stroke="#a0a0a0" stroke-width="2" stroke-linecap="round"/>
-      <path d="M 120 300 L 350 320" stroke="#a0a0a0" stroke-width="3" stroke-linecap="round"/>
-      <path d="M 40 400 L 280 420" stroke="#a0a0a0" stroke-width="2" stroke-linecap="round"/>
-      <path d="M 100 500 L 370 480" stroke="#a0a0a0" stroke-width="3" stroke-linecap="round"/>
-      <path d="M 200 100 L 220 600" stroke="#a0a0a0" stroke-width="2" stroke-linecap="round"/>
-      <path d="M 150 80 L 160 650" stroke="#a0a0a0" stroke-width="3" stroke-linecap="round"/>
+    <!-- Street grid pattern -->
+    <rect width="390" height="844" fill="url(#streetPattern)" opacity="0.8"/>
+    
+    <!-- Major roads and streets (Apple Maps style) -->
+    <g>
+      <!-- Main roads (wider, darker) -->
+      <path d="M 0 280 L 390 300" stroke="#c4beb0" stroke-width="5" stroke-linecap="round"/>
+      <path d="M 0 520 L 390 540" stroke="#c4beb0" stroke-width="5" stroke-linecap="round"/>
+      <path d="M 180 0 L 200 844" stroke="#c4beb0" stroke-width="5" stroke-linecap="round"/>
+      
+      <!-- Secondary streets -->
+      <path d="M 50 150 L 340 160" stroke="#d4cfc3" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 60 420 L 350 430" stroke="#d4cfc3" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 80 650 L 370 660" stroke="#d4cfc3" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 320 0 L 310 844" stroke="#d4cfc3" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 70 0 L 80 844" stroke="#d4cfc3" stroke-width="3" stroke-linecap="round"/>
+      
+      <!-- Highway/expressway -->
+      <path d="M 120 700 Q 180 600 250 480" stroke="#f8c555" stroke-width="6" stroke-linecap="round" opacity="0.9"/>
+      <path d="M 120 700 Q 180 600 250 480" stroke="#fdd870" stroke-width="4" stroke-linecap="round"/>
     </g>
     
-    <!-- Map labels (blurred buildings/parks) -->
-    <g opacity="0.3">
-      <rect x="120" y="240" width="60" height="60" fill="#b8d4b8" rx="4"/>
-      <rect x="250" y="350" width="80" height="80" fill="#b8d4b8" rx="4"/>
-      <rect x="80" y="480" width="50" height="50" fill="#d4d4d4" rx="2"/>
-      <rect x="280" y="200" width="70" height="70" fill="#d4d4d4" rx="2"/>
+    <!-- Parks and green spaces (Apple Maps green) -->
+    <g>
+      <rect x="280" y="100" width="90" height="110" fill="#b8e6b8" rx="6" opacity="0.7"/>
+      <rect x="250" y="560" width="70" height="80" fill="#b8e6b8" rx="4" opacity="0.7"/>
+      <rect x="20" y="380" width="55" height="65" fill="#b8e6b8" rx="4" opacity="0.7"/>
+    </g>
+    
+    <!-- Buildings/landmarks (subtle) -->
+    <g opacity="0.5">
+      <rect x="110" y="240" width="45" height="35" fill="#e8e4dc" rx="2"/>
+      <rect x="290" y="350" width="60" height="50" fill="#e8e4dc" rx="2"/>
+      <rect x="150" y="480" width="50" height="40" fill="#e8e4dc" rx="2"/>
+    </g>
+    
+    <!-- Water/river (light blue) -->
+    <path d="M 0 680 Q 100 670 200 680 Q 300 690 390 680" stroke="#b3d9e6" stroke-width="12" fill="none" opacity="0.6"/>
+    
+    <!-- Street labels (Apple Maps style) -->
+    <g font-family="-apple-system, SF Pro Text" font-size="11" fill="#8a8577" opacity="0.8">
+      <text x="120" y="145" transform="rotate(-2 120 145)">EVANGELISTA ST</text>
+      <text x="200" y="275" transform="rotate(-1 200 275)">BAGTIKAN STREET</text>
+      <text x="80" y="515" transform="rotate(-2 80 515)">HAYES STREET</text>
+    </g>
+    
+    <!-- Highway markers (Apple Maps style) -->
+    <g>
+      <!-- AH26 marker -->
+      <g transform="translate(200, 530)">
+        <rect x="-18" y="-10" width="36" height="20" fill="#4A90E2" rx="4"/>
+        <text x="0" y="4" font-family="-apple-system, SF Pro Text" font-size="12" font-weight="600" fill="white" text-anchor="middle">AH26</text>
+      </g>
+      
+      <!-- P2 marker -->
+      <g transform="translate(260, 500)">
+        <rect x="-14" y="-10" width="28" height="20" fill="#F8C555" rx="4"/>
+        <text x="0" y="4" font-family="-apple-system, SF Pro Text" font-size="12" font-weight="600" fill="black" text-anchor="middle">P2</text>
+      </g>
+      
+      <!-- C-4 marker -->
+      <g transform="translate(140, 680)">
+        <rect x="-16" y="-10" width="32" height="20" fill="white" stroke="#8a8577" stroke-width="1.5" rx="4"/>
+        <text x="0" y="4" font-family="-apple-system, SF Pro Text" font-size="12" font-weight="600" fill="#8a8577" text-anchor="middle">C-4</text>
+      </g>
+    </g>
+    
+    <!-- POI labels and markers (Apple Maps style) -->
+    <g>
+      <!-- Coffee shop -->
+      <g transform="translate(280, 250)">
+        <rect x="-35" y="-12" width="70" height="24" fill="white" rx="4" opacity="0.95"/>
+        <text x="0" y="4" font-family="-apple-system, SF Pro Text" font-size="12" fill="#8a8577" text-anchor="middle">Yardstick Coffee</text>
+        <text x="-30" y="3" font-size="14" fill="#f69435">☕</text>
+      </g>
+      
+      <!-- Museum -->
+      <g transform="translate(320, 180)">
+        <rect x="-30" y="-12" width="60" height="24" fill="white" rx="4" opacity="0.95"/>
+        <text x="0" y="4" font-family="-apple-system, SF Pro Text" font-size="12" fill="#8a8577" text-anchor="middle">Museum</text>
+        <text x="-25" y="3" font-size="14" fill="#e64b8d">🎨</text>
+      </g>
+      
+      <!-- Restaurant -->
+      <g transform="translate(140, 380)">
+        <rect x="-28" y="-12" width="56" height="24" fill="white" rx="4" opacity="0.95"/>
+        <text x="0" y="4" font-family="-apple-system, SF Pro Text" font-size="12" fill="#8a8577" text-anchor="middle">Kolesiyum</text>
+        <text x="-23" y="3" font-size="14" fill="#34C759">🍽️</text>
+      </g>
+      
+      <!-- Park -->
+      <g transform="translate(110, 520)">
+        <rect x="-30" y="-12" width="60" height="24" fill="white" rx="4" opacity="0.95"/>
+        <text x="0" y="4" font-family="-apple-system, SF Pro Text" font-size="12" fill="#8a8577" text-anchor="middle">Don Bosco</text>
+        <text x="-25" y="3" font-size="14" fill="#8a8577">🏫</text>
+      </g>
+      
+      <!-- Shop -->
+      <g transform="translate(250, 580)">
+        <rect x="-25" y="-12" width="50" height="24" fill="white" rx="4" opacity="0.95"/>
+        <text x="0" y="4" font-family="-apple-system, SF Pro Text" font-size="12" fill="#8a8577" text-anchor="middle">Tawiran</text>
+        <text x="-20" y="3" font-size="14" fill="#34C759">🌿</text>
+      </g>
+      
+      <!-- Cemetery marker -->
+      <g transform="translate(320, 450)">
+        <rect x="-40" y="-12" width="80" height="24" fill="white" rx="4" opacity="0.95"/>
+        <text x="0" y="4" font-family="-apple-system, SF Pro Text" font-size="12" fill="#8a8577" text-anchor="middle">Manila Cemetery</text>
+        <text x="-35" y="3" font-size="14" fill="#8a8577">⛪</text>
+      </g>
     </g>
     
     <!-- Place markers on map (available locations) -->
     <g>
       <!-- Available place markers -->
-      <g>
-        <circle cx="280" cy="280" r="8" fill="#34C759"/>
-        <circle cx="280" cy="280" r="3" fill="white"/>
-      </g>
+      <circle cx="280" cy="250" r="6" fill="#FF6B35"/>
+      <circle cx="280" cy="250" r="2" fill="white"/>
       
-      <g>
-        <circle cx="110" cy="280" r="8" fill="#34C759"/>
-        <circle cx="110" cy="280" r="3" fill="white"/>
-      </g>
+      <circle cx="320" cy="180" r="6" fill="#e64b8d"/>
+      <circle cx="320" cy="180" r="2" fill="white"/>
       
-      <g>
-        <circle cx="250" cy="580" r="8" fill="#34C759"/>
-        <circle cx="250" cy="580" r="3" fill="white"/>
-      </g>
+      <circle cx="140" cy="380" r="6" fill="#34C759"/>
+      <circle cx="140" cy="380" r="2" fill="white"/>
       
-      <g>
-        <circle cx="320" cy="450" r="8" fill="#34C759"/>
-        <circle cx="320" cy="450" r="3" fill="white"/>
-      </g>
+      <circle cx="110" cy="520" r="6" fill="#5B5B5B"/>
+      <circle cx="110" cy="520" r="2" fill="white"/>
       
-      <g>
-        <circle cx="140" cy="520" r="8" fill="#34C759"/>
-        <circle cx="140" cy="520" r="3" fill="white"/>
-      </g>
+      <circle cx="250" cy="580" r="6" fill="#34C759"/>
+      <circle cx="250" cy="580" r="2" fill="white"/>
       
-      <g>
-        <circle cx="310" cy="180" r="8" fill="#34C759"/>
-        <circle cx="310" cy="180" r="3" fill="white"/>
-      </g>
+      <circle cx="320" cy="450" r="6" fill="#8a8577"/>
+      <circle cx="320" cy="450" r="2" fill="white"/>
     </g>
     
     <!-- Jumping blue selector (showing multiple positions to simulate random jumping) -->
     <g>
-      <!-- Current position (brightest) -->
-      <circle cx="280" cy="280" r="32" fill="#007AFF" opacity="0.15"/>
-      <circle cx="280" cy="280" r="24" fill="#007AFF" opacity="0.25"/>
-      <circle cx="280" cy="280" r="16" fill="#007AFF" opacity="0.5"/>
-      <circle cx="280" cy="280" r="12" fill="#007AFF"/>
+      <!-- Current position at Coffee Shop (brightest) -->
+      <circle cx="280" cy="250" r="32" fill="#007AFF" opacity="0.15"/>
+      <circle cx="280" cy="250" r="24" fill="#007AFF" opacity="0.25"/>
+      <circle cx="280" cy="250" r="16" fill="#007AFF" opacity="0.5"/>
+      <circle cx="280" cy="250" r="12" fill="#007AFF"/>
       
       <!-- Ghost/trail positions (previous jumps - fading) -->
       <g opacity="0.4">
-        <circle cx="140" cy="520" r="28" fill="#007AFF" opacity="0.15"/>
-        <circle cx="140" cy="520" r="20" fill="#007AFF" opacity="0.25"/>
-        <circle cx="140" cy="520" r="12" fill="#007AFF" opacity="0.4"/>
+        <circle cx="140" cy="380" r="28" fill="#007AFF" opacity="0.15"/>
+        <circle cx="140" cy="380" r="20" fill="#007AFF" opacity="0.25"/>
+        <circle cx="140" cy="380" r="12" fill="#007AFF" opacity="0.4"/>
       </g>
       
       <g opacity="0.25">
-        <circle cx="310" cy="180" r="24" fill="#007AFF" opacity="0.15"/>
-        <circle cx="310" cy="180" r="16" fill="#007AFF" opacity="0.3"/>
+        <circle cx="320" cy="180" r="24" fill="#007AFF" opacity="0.15"/>
+        <circle cx="320" cy="180" r="16" fill="#007AFF" opacity="0.3"/>
       </g>
       
       <!-- Subtle connection lines showing jump path -->
-      <path d="M 310 180 L 140 520 L 280 280" stroke="#007AFF" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round" fill="none" opacity="0.2"/>
+      <path d="M 320 180 L 140 380 L 280 250" stroke="#007AFF" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round" fill="none" opacity="0.2"/>
     </g>
     
     <!-- Status bar (iOS style) -->
@@ -164,7 +251,7 @@
         </g>
         
         <!-- Place name with vibrancy -->
-        <text x="0" y="6" font-family="-apple-system, SF Pro Display" font-size="18" font-weight="600" fill="black" text-anchor="middle" opacity="0.85">The Daily Grind</text>
+        <text x="0" y="6" font-family="-apple-system, SF Pro Display" font-size="18" font-weight="600" fill="black" text-anchor="middle" opacity="0.85">Yardstick Coffee</text>
       </g>
     </g>
     
