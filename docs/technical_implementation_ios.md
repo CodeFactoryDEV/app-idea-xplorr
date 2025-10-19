@@ -123,7 +123,7 @@ extension Color {
 
 #### 2.2 Reusable Components
 
-**Floating Pill Button:**
+**Floating Pill Button (Liquid Glass):**
 ```swift
 // Components/UI/PillButton.swift
 struct PillButton: View {
@@ -140,18 +140,24 @@ struct PillButton: View {
                 Text(title)
                     .fontWeight(.semibold)
             }
+            .foregroundStyle(.primary.opacity(0.85)) // Vibrancy
             .padding(.horizontal, 20)
             .padding(.vertical, 12)
-            .background(.ultraThinMaterial)
+            .background(.ultraThinMaterial) // Blur + translucency
+            .background(Color.white.opacity(0.1)) // Subtle tint
             .clipShape(Capsule())
-            .shadow(color: .black.opacity(0.1), radius: 10, y: 5)
+            .overlay(
+                Capsule()
+                    .stroke(Color.white.opacity(0.6), lineWidth: 1.5) // Glass edge
+            )
+            .shadow(color: .black.opacity(0.15), radius: 10, y: 5)
         }
         .buttonStyle(.plain)
     }
 }
 ```
 
-**Floating Card:**
+**Floating Card (Liquid Glass):**
 ```swift
 // Components/UI/FloatingCard.swift
 struct FloatingCard<Content: View>: View {
@@ -164,8 +170,13 @@ struct FloatingCard<Content: View>: View {
     var body: some View {
         content
             .padding()
-            .background(.ultraThinMaterial)
+            .background(.ultraThinMaterial) // Blur + translucency
+            .background(Color.white.opacity(0.1)) // Subtle white tint
             .clipShape(RoundedRectangle(cornerRadius: 20))
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color.white.opacity(0.6), lineWidth: 1.5) // Glass edge highlight
+            )
             .shadow(color: .black.opacity(0.15), radius: 15, y: 8)
     }
 }
@@ -409,6 +420,164 @@ struct MapView: View {
     }
 }
 ```
+
+---
+
+## 📱 iOS Design Reference - Liquid Glass Implementation
+
+### Randomizer Screen Example
+
+Below is a realistic mockup showing how the randomizer screen implements Apple's Liquid Glass design principles with MapKit integration:
+
+![iOS Randomizer Screen](./images/ios-randomizer-mockup.svg)
+
+**Key Design Elements:**
+
+**1. Translucent Materials (Liquid Glass)**
+- **Top Header Card**: True glass effect with ~25% white opacity + blur filter + subtle border
+- **Bottom Action Pill**: Matching translucent treatment - you can see the map through it
+- **Center Button**: Circular glass with same transparency, allowing background visibility
+- **Key Principle**: Background should be clearly visible through all glass surfaces
+
+**2. Apple Maps Integration**
+- Full-screen MapKit view as base layer
+- Street lines and landmarks rendered in Apple Maps style
+- Multiple available place markers (green circles with white centers)
+- Blue selection indicator randomly jumping between locations
+
+**3. Visual Hierarchy**
+```swift
+// SwiftUI Material Implementation (Liquid Glass)
+.background(.ultraThinMaterial) // This provides the blur and translucency
+.background(Color.white.opacity(0.1)) // Subtle tint
+.overlay(
+    RoundedRectangle(cornerRadius: 28)
+        .stroke(Color.white.opacity(0.6), lineWidth: 1.5) // Glass edge
+)
+.shadow(color: .black.opacity(0.15), radius: 15, y: 8)
+
+// Important: Background must be visible through the material!
+```
+
+**4. Animation Details**
+- **Spinning Circle Icon** (top left): Continuous rotation at 1.5s duration
+- **X Logo Center**: 2-second rotation with spring physics
+- **Blue Jump Selector**: Randomly appears at different place markers with concentric pulse rings
+- **Ghost Trails**: Previous selection positions fade out (40% → 25% → 0% opacity)
+- **Jump Path Lines**: Subtle dashed lines connecting jump sequence
+
+**5. iOS System Elements**
+- **Status Bar**: Shows time (9:41), cellular, WiFi, battery
+- **Dynamic Island**: Black pill shape for iPhone 14 Pro+ models
+- **Home Indicator**: Bottom gesture bar (130pt wide, centered)
+
+**Implementation Notes:**
+
+```swift
+// Header with true liquid glass effect
+HStack(spacing: 12) {
+    ProgressView()
+        .progressViewStyle(.circular)
+        .tint(.blue)
+    
+    Text(selectedPlace.name)
+        .font(.headline)
+        .fontWeight(.semibold)
+        .foregroundStyle(.primary.opacity(0.85)) // Vibrancy effect
+}
+.padding(.horizontal, 24)
+.padding(.vertical, 14)
+.frame(maxWidth: 280)
+.background(.ultraThinMaterial) // Blur + translucency - background is visible!
+.background(Color.white.opacity(0.1)) // Subtle tint
+.clipShape(Capsule())
+.overlay(
+    Capsule()
+        .stroke(Color.white.opacity(0.6), lineWidth: 1.5) // Glass edge highlight
+)
+.shadow(color: .black.opacity(0.15), radius: 15, y: 8)
+```
+
+**Jumping Selector Animation:**
+
+```swift
+// Random jumping between place markers
+struct JumpingSelectorView: View {
+    let places: [Place]
+    @State private var currentIndex: Int = 0
+    @State private var previousIndices: [Int] = []
+    
+    var body: some View {
+        ZStack {
+            // Ghost trails of previous positions
+            ForEach(Array(previousIndices.enumerated()), id: \.offset) { index, placeIndex in
+                let opacity = Double(previousIndices.count - index) / Double(previousIndices.count)
+                PulseRing(opacity: opacity * 0.4)
+                    .position(places[placeIndex].coordinate.toCGPoint())
+            }
+            
+            // Current selection with strong pulse
+            PulseRing(opacity: 1.0)
+                .position(places[currentIndex].coordinate.toCGPoint())
+        }
+        .onAppear {
+            startRandomJumping()
+        }
+    }
+    
+    private func startRandomJumping() {
+        Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true) { _ in
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                previousIndices.append(currentIndex)
+                if previousIndices.count > 3 {
+                    previousIndices.removeFirst()
+                }
+                currentIndex = Int.random(in: 0..<places.count)
+            }
+        }
+    }
+}
+
+struct PulseRing: View {
+    let opacity: Double
+    @State private var pulseScale: CGFloat = 1.0
+    
+    var body: some View {
+        ZStack {
+            // Outer rings
+            Circle()
+                .fill(Color.blue.opacity(opacity * 0.15))
+                .frame(width: 64, height: 64)
+                .scaleEffect(pulseScale)
+            
+            Circle()
+                .fill(Color.blue.opacity(opacity * 0.25))
+                .frame(width: 48, height: 48)
+                .scaleEffect(pulseScale * 0.8)
+            
+            // Core
+            Circle()
+                .fill(Color.blue.opacity(opacity))
+                .frame(width: 24, height: 24)
+        }
+        .onAppear {
+            withAnimation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true)) {
+                pulseScale = 1.2
+            }
+        }
+    }
+}
+```
+
+**Color Palette:**
+- Primary Action: `#007AFF` (iOS Blue)
+- Success/Available: `#34C759` (iOS Green)
+- Glass Material: `.ultraThinMaterial` with `rgba(255, 255, 255, 0.25)` tint (highly translucent!)
+- Glass Border: `rgba(255, 255, 255, 0.6)` for edge definition
+- Map Background: `#e8f4f8` to `#c2dfe8` gradient
+- Text on Glass: Black at 70-85% opacity for proper vibrancy effect
+
+This design ensures the app feels native to iOS while maintaining the xplorr brand identity through the custom X logo and interaction patterns.
 
 ---
 

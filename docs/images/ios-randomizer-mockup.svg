@@ -1,0 +1,230 @@
+<svg width="390" height="844" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+  <!-- iPhone 14 Pro mockup with realistic iOS design -->
+  
+  <!-- Background: Apple Maps style -->
+  <defs>
+    <!-- Gradient for map background -->
+    <linearGradient id="mapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8f4f8;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#d4e9f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c2dfe8;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Filter for glass blur effect -->
+    <filter id="glassBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
+    </filter>
+    
+    <!-- Drop shadow for floating elements -->
+    <filter id="floatingShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" />
+      <feOffset dx="0" dy="4" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.25" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- iPhone frame -->
+  <rect width="390" height="844" fill="#000000" rx="47"/>
+  
+  <!-- Screen area -->
+  <g clip-path="url(#screenClip)">
+    <clipPath id="screenClip">
+      <rect x="0" y="0" width="390" height="844" rx="47"/>
+    </clipPath>
+    
+    <!-- Apple Maps background -->
+    <rect width="390" height="844" fill="url(#mapGradient)"/>
+    
+    <!-- Map street lines (simplified Apple Maps style) -->
+    <g opacity="0.4">
+      <path d="M 50 200 L 340 220" stroke="#a0a0a0" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 80 150 L 300 180" stroke="#a0a0a0" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 120 300 L 350 320" stroke="#a0a0a0" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 40 400 L 280 420" stroke="#a0a0a0" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 100 500 L 370 480" stroke="#a0a0a0" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 200 100 L 220 600" stroke="#a0a0a0" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 150 80 L 160 650" stroke="#a0a0a0" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Map labels (blurred buildings/parks) -->
+    <g opacity="0.3">
+      <rect x="120" y="240" width="60" height="60" fill="#b8d4b8" rx="4"/>
+      <rect x="250" y="350" width="80" height="80" fill="#b8d4b8" rx="4"/>
+      <rect x="80" y="480" width="50" height="50" fill="#d4d4d4" rx="2"/>
+      <rect x="280" y="200" width="70" height="70" fill="#d4d4d4" rx="2"/>
+    </g>
+    
+    <!-- Place markers on map (available locations) -->
+    <g>
+      <!-- Available place markers -->
+      <g>
+        <circle cx="280" cy="280" r="8" fill="#34C759"/>
+        <circle cx="280" cy="280" r="3" fill="white"/>
+      </g>
+      
+      <g>
+        <circle cx="110" cy="280" r="8" fill="#34C759"/>
+        <circle cx="110" cy="280" r="3" fill="white"/>
+      </g>
+      
+      <g>
+        <circle cx="250" cy="580" r="8" fill="#34C759"/>
+        <circle cx="250" cy="580" r="3" fill="white"/>
+      </g>
+      
+      <g>
+        <circle cx="320" cy="450" r="8" fill="#34C759"/>
+        <circle cx="320" cy="450" r="3" fill="white"/>
+      </g>
+      
+      <g>
+        <circle cx="140" cy="520" r="8" fill="#34C759"/>
+        <circle cx="140" cy="520" r="3" fill="white"/>
+      </g>
+      
+      <g>
+        <circle cx="310" cy="180" r="8" fill="#34C759"/>
+        <circle cx="310" cy="180" r="3" fill="white"/>
+      </g>
+    </g>
+    
+    <!-- Jumping blue selector (showing multiple positions to simulate random jumping) -->
+    <g>
+      <!-- Current position (brightest) -->
+      <circle cx="280" cy="280" r="32" fill="#007AFF" opacity="0.15"/>
+      <circle cx="280" cy="280" r="24" fill="#007AFF" opacity="0.25"/>
+      <circle cx="280" cy="280" r="16" fill="#007AFF" opacity="0.5"/>
+      <circle cx="280" cy="280" r="12" fill="#007AFF"/>
+      
+      <!-- Ghost/trail positions (previous jumps - fading) -->
+      <g opacity="0.4">
+        <circle cx="140" cy="520" r="28" fill="#007AFF" opacity="0.15"/>
+        <circle cx="140" cy="520" r="20" fill="#007AFF" opacity="0.25"/>
+        <circle cx="140" cy="520" r="12" fill="#007AFF" opacity="0.4"/>
+      </g>
+      
+      <g opacity="0.25">
+        <circle cx="310" cy="180" r="24" fill="#007AFF" opacity="0.15"/>
+        <circle cx="310" cy="180" r="16" fill="#007AFF" opacity="0.3"/>
+      </g>
+      
+      <!-- Subtle connection lines showing jump path -->
+      <path d="M 310 180 L 140 520 L 280 280" stroke="#007AFF" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round" fill="none" opacity="0.2"/>
+    </g>
+    
+    <!-- Status bar (iOS style) -->
+    <g>
+      <!-- Time -->
+      <text x="30" y="54" font-family="-apple-system, SF Pro Text" font-size="17" font-weight="600" fill="black">9:41</text>
+      
+      <!-- Status icons (right side) -->
+      <g transform="translate(320, 45)">
+        <!-- Cellular -->
+        <rect x="0" y="5" width="3" height="4" fill="black" rx="0.5"/>
+        <rect x="5" y="3" width="3" height="6" fill="black" rx="0.5"/>
+        <rect x="10" y="1" width="3" height="8" fill="black" rx="0.5"/>
+        <rect x="15" y="0" width="3" height="9" fill="black" rx="0.5"/>
+        
+        <!-- WiFi -->
+        <g transform="translate(25, 0)">
+          <path d="M 6 9 L 8 6 Q 8 4 6 2 Q 4 4 4 6 Z" fill="black"/>
+          <circle cx="7" cy="8" r="1.5" fill="black"/>
+        </g>
+        
+        <!-- Battery -->
+        <rect x="42" y="2" width="24" height="11" fill="none" stroke="black" stroke-width="1.5" rx="3"/>
+        <rect x="66" y="5" width="2" height="5" fill="black" rx="0.5"/>
+        <rect x="44" y="4" width="20" height="7" fill="black" rx="1.5"/>
+      </g>
+    </g>
+    
+    <!-- Dynamic Island (iOS 16+) -->
+    <rect x="125" y="28" width="140" height="37" fill="black" rx="18.5"/>
+    
+    <!-- Top header card (Liquid Glass) -->
+    <g transform="translate(195, 120)">
+      <!-- Glass background with blur -->
+      <rect x="-140" y="-28" width="280" height="56" fill="white" opacity="0.25" rx="28" filter="url(#glassBlur)"/>
+      <rect x="-140" y="-28" width="280" height="56" fill="white" opacity="0.18" rx="28" filter="url(#floatingShadow)"/>
+      <!-- Subtle border for glass edge -->
+      <rect x="-140" y="-28" width="280" height="56" fill="none" stroke="white" stroke-width="1.5" opacity="0.6" rx="28"/>
+      
+      <!-- Content -->
+      <g transform="translate(0, 0)">
+        <!-- Spinning icon (left) -->
+        <g transform="translate(-100, 0)">
+          <circle cx="0" cy="0" r="16" fill="none" stroke="#007AFF" stroke-width="2.5" stroke-dasharray="50 25"/>
+          <animateTransform attributeName="transform" type="rotate" from="0 -100 0" to="360 -100 0" dur="1.5s" repeatCount="indefinite"/>
+        </g>
+        
+        <!-- Place name with vibrancy -->
+        <text x="0" y="6" font-family="-apple-system, SF Pro Display" font-size="18" font-weight="600" fill="black" text-anchor="middle" opacity="0.85">The Daily Grind</text>
+      </g>
+    </g>
+    
+    <!-- Center: Rotating X logo -->
+    <g transform="translate(195, 422)">
+      <!-- Outer glow -->
+      <circle cx="0" cy="0" r="50" fill="#007AFF" opacity="0.1"/>
+      <!-- Glass button background -->
+      <circle cx="0" cy="0" r="40" fill="white" opacity="0.25" filter="url(#glassBlur)"/>
+      <circle cx="0" cy="0" r="40" fill="white" opacity="0.18" filter="url(#floatingShadow)"/>
+      <circle cx="0" cy="0" r="40" fill="none" stroke="white" stroke-width="1.5" opacity="0.6"/>
+      
+      <!-- X logo (rotating) -->
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="2s" repeatCount="indefinite"/>
+        
+        <!-- Main diagonal line: SW to NE -->
+        <line x1="-16" y1="16" x2="16" y2="-16" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+        
+        <!-- Circle at SW end (origin) -->
+        <circle cx="-16" cy="16" r="4" fill="black"/>
+        
+        <!-- Small X at NE end (destination), rotated 45 degrees -->
+        <g transform="translate(16, -16) rotate(45)">
+          <line x1="-3" y1="-3" x2="3" y2="3" stroke="black" stroke-width="2"/>
+          <line x1="3" y1="-3" x2="-3" y2="3" stroke="black" stroke-width="2"/>
+        </g>
+        
+        <!-- Other diagonal line: NW to SE (plain) -->
+        <line x1="-16" y1="-16" x2="16" y2="16" stroke="black" stroke-width="3.5" stroke-linecap="round"/>
+      </g>
+    </g>
+    
+    <!-- Bottom pill card (Liquid Glass) -->
+    <g transform="translate(195, 740)">
+      <!-- Glass background with blur -->
+      <rect x="-170" y="-32" width="340" height="64" fill="white" opacity="0.25" rx="32" filter="url(#glassBlur)"/>
+      <rect x="-170" y="-32" width="340" height="64" fill="white" opacity="0.18" rx="32" filter="url(#floatingShadow)"/>
+      <!-- Subtle border for glass edge -->
+      <rect x="-170" y="-32" width="340" height="64" fill="none" stroke="white" stroke-width="1.5" opacity="0.6" rx="32"/>
+      
+      <!-- Content -->
+      <g transform="translate(0, 0)">
+        <!-- Left side: Status text with vibrancy -->
+        <text x="-140" y="6" font-family="-apple-system, SF Pro Text" font-size="16" font-weight="500" fill="black" opacity="0.7">Finding your spot...</text>
+        
+        <!-- Right side: Pause button -->
+        <g transform="translate(130, 0)">
+          <circle cx="0" cy="0" r="20" fill="#007AFF" opacity="0.15"/>
+          <circle cx="0" cy="0" r="18" fill="#007AFF"/>
+          
+          <!-- Pause icon -->
+          <rect x="-5" y="-8" width="3" height="16" fill="white" rx="1.5"/>
+          <rect x="2" y="-8" width="3" height="16" fill="white" rx="1.5"/>
+        </g>
+      </g>
+    </g>
+    
+    <!-- Home indicator -->
+    <rect x="130" y="820" width="130" height="5" fill="black" opacity="0.3" rx="2.5"/>
+  </g>
+</svg>
+
